@@ -13,7 +13,7 @@ class CreateJenisLayananPengaduansTable extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_layanan_pengaduans', function (Blueprint $table) {
+        Schema::create('jenis_layanan_pengaduan', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateJenisLayananPengaduansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jenis_layanan_pengaduans');
+        Schema::dropIfExists('jenis_layanan_pengaduan');
     }
 }
