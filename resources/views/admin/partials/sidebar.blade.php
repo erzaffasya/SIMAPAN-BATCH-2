@@ -10,6 +10,9 @@
                 <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Master </span> <span
                         class="menu-arrow"></span></a>
                 <ul>
+                    <li><a href="{{ route('user.index') }}"
+                            class="{{ Request::routeIs('user.*') ? 'active' : '' }}">Akun</a>
+                    </li>
                     <li><a href="{{ route('jenis-layanan.index') }}"
                             class="{{ Request::routeIs('jenis-layanan.*') ? 'active' : '' }}">Jenis Layanan</a>
                     </li>
@@ -20,20 +23,11 @@
             </li>
 
             <li class="submenu">
-                <a href="javascript:void(0);"><i data-feather="columns"></i> <span> USER </span> <span
+                <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Pengaduan </span> <span
                         class="menu-arrow"></span></a>
                 <ul>
-                    <li><a href="{{ route('user.index') }}"
-                            class="{{ Request::routeIs('user.*') ? 'active' : '' }}">User</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="submenu">
-                <a href="javascript:void(0);"><i data-feather="columns"></i> <span> USER </span> <span
-                        class="menu-arrow"></span></a>
-                <ul>
-                    <li><a href="{{ route('user.index') }}"
-                            class="{{ Request::routeIs('user.*') ? 'active' : '' }}">User</a>
+                    <li><a href="{{ route('pengaduan.create') }}"
+                            class="{{ Request::routeIs('pengaduan.*') ? 'active' : '' }}">Pengaduan</a>
                     </li>
                 </ul>
             </li>

@@ -15,6 +15,23 @@
                     <div class="row">
                         <div class="col-lg-12 col-sm-12 col-12">
                             <div class="form-group">
+                                <label>Role</label>
+                                <select class="form-control" name="role">
+                                    <option disabled value="">Pilih Role</option>
+                                    <option @if ($user->role == 'admin') selected @endif value="admin">Admin
+                                    </option>
+                                    <option @if ($user->role == 'artikel') selected @endif value="artikel">Artikel
+                                    </option>
+                                    <option @if ($user->role == 'forum') selected @endif value="forum">Forum Anak
+                                    </option>
+                                    <option @if ($user->role == 'edukasi') selected @endif value="edukasi">Edukasi
+                                        Anak</option>
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-sm-12 col-12">
+                            <div class="form-group">
                                 <label>Username</label>
                                 <input name="name" type="text" value="{{ $user->name }}">
                             </div>

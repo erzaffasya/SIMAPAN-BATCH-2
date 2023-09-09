@@ -28,6 +28,7 @@
                                 <th>No</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                <th>Role</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -37,6 +38,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
+                                    <td>{{ $item->role }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a class="me-3" href="{{ route('user.edit', $item->id) }}">

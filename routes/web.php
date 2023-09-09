@@ -3,6 +3,7 @@
 use App\Http\Controllers\JenisKekerasanController;
 use App\Http\Controllers\JenisLayananController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\TinyMceController;
 use App\Http\Controllers\UserController;
 use App\Models\JenisLayanan;
@@ -43,6 +44,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('user', UserController::class);
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
+    Route::resource('pengaduan', PengaduanController::class);
     Route::resource('jenis-kekerasan', JenisKekerasanController::class);
     Route::resource('jenis-layanan', JenisLayananController::class);
 
