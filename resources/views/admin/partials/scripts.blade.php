@@ -13,6 +13,12 @@
     <script src="{{ asset('tadmin/assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('tadmin/assets/js/dataTables.bootstrap4.min.js') }}"></script>
 
+
+    <!-- Wizard JS -->
+    <script src="{{asset('tadmin/assets/plugins/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+    <script src="{{asset('tadmin/assets/plugins/twitter-bootstrap-wizard/prettify.js')}}"></script>
+    <script src="{{asset('tadmin/assets/plugins/twitter-bootstrap-wizard/form-wizard.js')}}"></script>
+
     <!-- Bootstrap Core JS -->
     <script src="{{ asset('tadmin/assets/js/bootstrap.bundle.min.js') }}"></script>
 

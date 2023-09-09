@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\JenisKekerasanController;
+use App\Http\Controllers\JenisLayananController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\TinyMceController;
 use App\Http\Controllers\UserController;
+use App\Models\JenisLayanan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +27,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+Route::get('/', function () {
+    return view('auth.login');
+});
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
@@ -35,6 +42,9 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('kegiatan', KegiatanController::class);
     Route::resource('user', UserController::class);
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+
+    Route::resource('jenis-kekerasan', JenisKekerasanController::class);
+    Route::resource('jenis-layanan', JenisLayananController::class);
 
     //tiny mce upload
     Route::post('tiny-upload', [TinyMceController::class, "upload"])->name('tiny-upload');

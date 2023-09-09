@@ -27,6 +27,10 @@
 <link rel="stylesheet" href="{{ asset('tadmin/assets/plugins/fontawesome/css/fontawesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('tadmin/assets/plugins/fontawesome/css/all.min.css') }}">
 
+
+<!-- Wizard CSS -->
+<link rel="stylesheet" href="{{ asset('tadmin/assets/plugins/twitter-bootstrap-wizard/form-wizard.css') }}">
+
 <!-- Main CSS -->
 <link rel="stylesheet" href="{{ asset('tadmin/assets/css/style.css') }}">
 @stack('css')

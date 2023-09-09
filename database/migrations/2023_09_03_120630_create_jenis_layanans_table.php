@@ -15,7 +15,7 @@ class CreateJenisLayanansTable extends Migration
     {
         Schema::create('jenis_layanan', function (Blueprint $table) {
             $table->id();
-            $table->string("layanan")->nullable();
+            $table->string("jenis_layanan")->nullable();
             $table->timestamps();
         });
     }

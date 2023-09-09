@@ -15,6 +15,8 @@ class CreateJenisLayananPengaduansTable extends Migration
     {
         Schema::create('jenis_layanan_pengaduan', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("jenis_layanan_id")->constrained("jenis_layanan");
+            $table->foreignId("pengaduan_id")->constrained("pengaduan");
             $table->timestamps();
         });
     }
