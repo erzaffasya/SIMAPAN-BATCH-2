@@ -39,8 +39,6 @@ Route::get('/dashboard', function () {
 // Route::get('/', [LandingpageController::class, 'index'])->name('index');
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-
-    Route::resource('kegiatan', KegiatanController::class);
     Route::resource('user', UserController::class);
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 

@@ -17,8 +17,8 @@ class CreatePengaduansTable extends Migration
             $table->id();
             $table->string("nomor")->nullable();
             $table->date("tanggal_registrasi")->nullable();
-            $table->string("petugas_penerima")->nullable();
-            $table->string("petugas_menangani")->nullable();
+            $table->foreignId("petugas_penerima")->constrained("users");
+            $table->foreignId("petugas_menangani")->constrained("users");
             $table->enum("jenis_aduan",["KDRT", "NON KDRT"])->nullable();
             $table->string("nama_pelapor")->nullable();
             $table->enum("jenis_kelamin_pelapor",["Laki-Laki","Perempuan"])->nullable();
