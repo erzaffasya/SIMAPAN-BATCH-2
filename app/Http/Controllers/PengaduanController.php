@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisLayanan;
 use App\Models\Pengaduan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PengaduanController extends Controller
@@ -15,7 +17,9 @@ class PengaduanController extends Controller
 
     public function create()
     {
-        return view('admin.pengaduan.tambah');
+        $user = User::all();
+        $layanan = JenisLayanan::all();
+        return view('admin.pengaduan.tambah', compact('user','layanan'));
     }
 
     public function store(Request $request)
