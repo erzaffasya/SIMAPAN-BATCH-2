@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisLayananPengaduan;
 use Illuminate\Http\Request;
 
-class JenisLayananPengaduanPengaduanController extends Controller
+class JenisLayananPengaduanController extends Controller
 {
     public function index()
     {

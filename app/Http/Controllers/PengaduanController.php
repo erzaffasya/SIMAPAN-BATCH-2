@@ -6,6 +6,8 @@ use App\Models\JenisLayanan;
 use App\Models\Pengaduan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PengaduanController extends Controller
 {
