@@ -61,6 +61,13 @@ class CreatePengaduansTable extends Migration
             $table->text("keterangan")->nullable();
             $table->string("tandatangan_pelapor")->nullable();
             $table->text("dokumen")->nullable();
+
+
+            $table->text("kk")->nullable();
+            $table->text("akta")->nullable();
+            $table->text("foto_korban")->nullable();
+            $table->text("ktp")->nullable();
+            $table->text("ttd")->nullable();
             $table->timestamps();
         });
     }

@@ -82,7 +82,7 @@
                                             <div class="mb-3">
                                                 <label for="basicpill-firstname-input" class="form-label">No.
                                                     Registrasi</label>
-                                                <input type="text" name="nomor" class="form-control"
+                                                <input type="text" name="nomor" readonly class="form-control"
                                                     id="basicpill-firstname-input">
                                             </div>
                                         </div>
@@ -101,20 +101,28 @@
                                             <div class="mb-3">
                                                 <label for="basicpill-phoneno-input" class="form-label">Petugas
                                                     Penerima</label>
-                                                <input type="text" name="petugas_penerima" class="form-control" id="basicpill-phoneno-input">
+                                                <select class="form-select" name="petugas_penerima" name="customer">
+                                                    @foreach ($user as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="basicpill-email-input" class="form-label">Petugas
                                                     Menangani</label>
-                                                <input type="email" name="petugas_menangani" class="form-control" id="basicpill-email-input">
+                                                <select class="form-select" name="petugas_menangani" name="customer">
+                                                    @foreach ($user as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="basicpill-email-input" class="form-label">Jenis
-                                                    Aduan</label>
+                                                    Kekerasan/Non Kekerasan</label>
                                                 <select class="form-select" name="jenis_aduan" name="customer">
                                                     <option value="">KDRT</option>
                                                     <option value="">NON KDRT</option>
@@ -132,7 +140,7 @@
                             <div class="tab-pane" id="form-pelapor-wizard">
                                 <div>
                                     <div class="mb-4">
-                                        <h5>Enter Your Address</h5>
+                                        <h5>Data Pelapor</h5>
                                     </div>
                                     <form>
                                         <div class="row">
@@ -149,8 +157,11 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-vatno-input" class="form-label">Jenis
                                                         Kelamin Pelapor</label>
-                                                    <input type="text" name="jenis_kelamin_pelapor" class="form-control"
-                                                        id="basicpill-vatno-input">
+                                                    <select class="form-select" name="jenis_kelamin_pelapor"
+                                                        name="customer">
+                                                        <option value="">Laki-Laki</option>
+                                                        <option value="">Perempuan</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -159,8 +170,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-cstno-input" class="form-label">Alamat
                                                         Pelapor</label>
-                                                    <input type="text" name="alamat_pelapor" class="form-control"
-                                                        id="basicpill-cstno-input">
+                                                    <textarea name="alamat_pelapor" class="form-control"></textarea>
                                                 </div>
                                             </div>
 
@@ -168,7 +178,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Nomor
                                                         Handphone</label>
-                                                    <input type="text" name="hp_pelapor" class="form-control"
+                                                    <input type="number" name="hp_pelapor" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
@@ -196,7 +206,7 @@
                             <div class="tab-pane" id="form-korban-wizard">
                                 <div>
                                     <div class="mb-4">
-                                        <h5>Enter Your Address</h5>
+                                        <h5>Data Korban</h5>
                                     </div>
                                     <form>
                                         <div class="row">
@@ -213,8 +223,8 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Nama
                                                         Alias Korban</label>
-                                                    <input type="text" name="nama_alias_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="nama_alias_korban"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
 
@@ -222,7 +232,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">NIK
                                                         Korban</label>
-                                                    <input type="text" name="nik_korban" class="form-control"
+                                                    <input type="number" name="nik_korban" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
@@ -232,8 +242,11 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Korban</label>
-                                                    <input type="text" name="jenis_kelamin_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <select class="form-select" name="jenis_kelamin_korban"
+                                                        name="customer">
+                                                        <option value="">Laki-Laki</option>
+                                                        <option value="">Perempuan</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -248,7 +261,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Usia
                                                         Korban</label>
-                                                    <input type="text" name="usia_korban" class="form-control"
+                                                    <input type="number" name="usia_korban" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
@@ -256,32 +269,31 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Alamat
                                                         Korban</label>
-                                                    <input type="text" name="alamat_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <textarea name="alamat_korban" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Kelurahan</label>
-                                                    <input type="text" name="kelurahan_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="kelurahan_korban"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Kecamatan</label>
-                                                    <input type="text" name="kecamatan_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="kecamatan_korban"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Pendidikan Korban</label>
-                                                    <input type="text" name="pendidikan_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="pendidikan_korban"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -304,16 +316,16 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Kewarganegaraan Korban</label>
-                                                    <input type="text" name="kewarganegaraan_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="kewarganegaraan_korban"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Pekerjaan Korban</label>
-                                                    <input type="text" name="pekerjaan_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="pekerjaan_korban"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
 
@@ -321,8 +333,26 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Layanan
                                                         Yang Diberikan</label>
-                                                    <input type="text" name="layanan_id[]" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <select class="form-select" multiple="true"
+                                                        name="jenis_kelamin_korban" name="layanan_id[]">
+                                                        @foreach ($layanan as $item)
+                                                            <option value="">{{ $item->jenis_layanan }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Jenis
+                                                        Kekerasan</label>
+                                                    <select class="form-select" multiple="true"
+                                                        name="jenis_kelamin_korban" name="layanan_id[]">
+                                                        @foreach ($kekerasan as $item)
+                                                            <option value="">{{ $item->jenis_kekerasan }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -340,7 +370,7 @@
                             <div class="tab-pane" id="form-pelaku-wizard">
                                 <div>
                                     <div class="mb-4">
-                                        <h5>Enter Your Address</h5>
+                                        <h5>Data Pelaku</h5>
                                     </div>
                                     <form>
                                         <div class="row">
@@ -353,14 +383,14 @@
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
-                                            
+
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Pelaku</label>
-                                                    <input type="text" name="jenis_kelamin_pelaku" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="jenis_kelamin_pelaku"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -375,7 +405,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Usia
                                                         Pelaku</label>
-                                                    <input type="text" name="usia_pelaku" class="form-control"
+                                                    <input type="number" name="usia_pelaku" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
@@ -383,16 +413,15 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Alamat
                                                         Pelaku</label>
-                                                    <input type="text" name="alamat_pelaku" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <textarea name="alamat_pelaku" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Pendidikan Pelaku</label>
-                                                    <input type="text" name="pendidikan_pelaku" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="pendidikan_pelaku"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -415,8 +444,16 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Pekerjaan Pelaku</label>
-                                                    <input type="text" name="pekerjaan_pelaku" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="text" name="pekerjaan_pelaku"
+                                                        class="form-control" id="basicpill-servicetax-input">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">Hubungan Pelaku Dengan Korban</label>
+                                                    <input type="text" name="hubungan_pelaku"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -435,21 +472,23 @@
                             <div class="tab-pane" id="form-kronologis-wizard">
                                 <div>
                                     <div class="mb-4">
-                                        <h5>Payment Details</h5>
+                                        <h5>Data Kronologis</h5>
                                     </div>
                                     <form>
                                         <div class="row">
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tempat Kejadian Perkara</label>
-                                                    <input type="text" name="tempat_kejadian_perkara" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Tempat
+                                                        Kejadian Perkara</label>
+                                                    <input type="text" name="tempat_kejadian"
+                                                        class="form-control" id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">KDRT/NON KDRT</label>
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">KDRT/NON KDRT</label>
                                                     <input type="text" name="kdrt_nonkdrt" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
@@ -457,36 +496,63 @@
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Kronologis</label>
-                                                    <input type="text" name="kronologis" class="form-control"
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">Kronologis</label>
+                                                    <textarea name="kronologis" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Status
+                                                        Kasus</label>
+                                                    <input type="text" name="status_kasus" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Status Kasus</label>
-                                                    <input type="text" class="form-control"
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">Keterangan</label>
+                                                    <textarea name="keterangan" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda
+                                                        Tangan</label>
+                                                    <input type="text" name="ttd" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Keterangan</label>
-                                                    <input type="text" class="form-control"
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">KTP</label>
+                                                    <input type="file" name="ktp" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda Tangan</label>
-                                                    <input type="text" class="form-control"
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">Akta</label>
+                                                    <input type="file" name="akta" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Dokumen</label>
-                                                    <input type="text" class="form-control"
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">KK</label>
+                                                    <input type="file" name="kk" class="form-control"
+                                                        id="basicpill-servicetax-input">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Foto
+                                                        Korban</label>
+                                                    <input type="file" name="foto_korban" class="form-control"
                                                         id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
