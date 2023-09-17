@@ -1,5 +1,23 @@
 <x-app-layout>
+    <style>
+        .wrapper {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
+        .signature-pad {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px !important;
+            height: 200px;
+        }
+    </style>
     <!-- Page Header -->
     <div class="page-header">
         <div class="row">
@@ -114,7 +132,8 @@
                                                     Menangani</label>
                                                 <select class="form-select" name="petugas_menangani" name="customer">
                                                     @foreach ($user as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                        <option value="{{ $item->id }}">{{ $item->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -253,16 +272,16 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Korban</label>
-                                                    <input type="text" name="lahir_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="date" name="lahir_korban" class="form-control"
+                                                        id="lahir_korban">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Usia
                                                         Korban</label>
-                                                    <input type="number" name="usia_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="number" readonly name="usia_korban" id="usia_korban"
+                                                        class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -275,17 +294,24 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
-                                                        class="form-label">Kelurahan</label>
-                                                    <input type="text" name="kelurahan_korban"
-                                                        class="form-control" id="basicpill-servicetax-input">
+                                                        class="form-label">Kecamatan</label>
+                                                    <select class="form-select" id="kecamatan"
+                                                        name="kecamata_korban">
+                                                        @foreach ($kota as $item)
+                                                            <option value="{{ $item->id }}">{{ $item->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
-                                                        class="form-label">Kecamatan</label>
-                                                    <input type="text" name="kecamatan_korban"
-                                                        class="form-control" id="basicpill-servicetax-input">
+                                                        class="form-label">Kelurahan</label>
+                                                    <select class="form-select" name="kelurahan_korban"
+                                                        id="desa" required>
+                                                        <option>==Pilih Salah Satu==</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -333,8 +359,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Layanan
                                                         Yang Diberikan</label>
-                                                    <select class="form-select" multiple="true"
-                                                        name="jenis_kelamin_korban" name="layanan_id[]">
+                                                    <select class="form-select" multiple="true" name="layanan_id[]">
                                                         @foreach ($layanan as $item)
                                                             <option value="">{{ $item->jenis_layanan }}</option>
                                                         @endforeach
@@ -389,24 +414,27 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Pelaku</label>
-                                                    <input type="text" name="jenis_kelamin_pelaku"
-                                                        class="form-control" id="basicpill-servicetax-input">
+                                                    <select class="form-select" name="jenis_kelamin_pelaku"
+                                                        name="customer">
+                                                        <option value="">Laki-Laki</option>
+                                                        <option value="">Perempuan</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Pelaku</label>
-                                                    <input type="text" name="lahir_pelaku" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="date" name="lahir_pelaku" class="form-control"
+                                                        id="lahir_pelaku">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Usia
                                                         Pelaku</label>
-                                                    <input type="number" name="usia_pelaku" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <input type="number" readonly name="usia_pelaku" class="form-control"
+                                                        id="usia_pelaku">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -452,8 +480,8 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Hubungan Pelaku Dengan Korban</label>
-                                                    <input type="text" name="hubungan_pelaku"
-                                                        class="form-control" id="basicpill-servicetax-input">
+                                                    <input type="text" name="hubungan_pelaku" class="form-control"
+                                                        id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -481,8 +509,8 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat
                                                         Kejadian Perkara</label>
-                                                    <input type="text" name="tempat_kejadian"
-                                                        class="form-control" id="basicpill-servicetax-input">
+                                                    <input type="text" name="tempat_kejadian" class="form-control"
+                                                        id="basicpill-servicetax-input">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -505,8 +533,11 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Status
                                                         Kasus</label>
-                                                    <input type="text" name="status_kasus" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <select class="form-select" name="status_kasus">
+                                                        <option value="">Pengaduan</option>
+                                                        <option value="">Proses</option>
+                                                        <option value="">Selesai</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -520,8 +551,17 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tanda
                                                         Tangan</label>
-                                                    <input type="text" name="ttd" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <div class="m-signature-pad">
+                                                        <div class="m-signature-pad--body">
+                                                            <canvas style="border: 2px dashed #ccc"></canvas>
+                                                        </div>
+
+                                                        <div class="m-signature-pad--footer">
+                                                            <button type="button" class="btn btn-sm btn-secondary"
+                                                                data-action="clear">Clear</button>
+                                                            {{-- <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button> --}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -580,5 +620,86 @@
         <!-- /Wizard -->
     </div>
 
+    <script>
+        function onChangeSelect(url, id, name) {
+            // send ajax request to get the cities of the selected province and append to the select tag
+            $.ajax({
+                url: url,
+                type: 'GET',
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    $('#' + name).empty();
+                    $('#' + name).append('<option>==Pilih Salah Satu==</option>');
+
+                    $.each(data, function(key, value) {
+                        $('#' + name).append('<option value="' + key + '">' + value + '</option>');
+                    });
+                }
+            });
+        }
+        $(function() {
+            $('#kecamatan').on('change', function() {
+                onChangeSelect('{{ route('villages') }}', $(this).val(), 'desa');
+            })
+
+            $('#lahir_korban').on('change', function() {
+                const birthdate = document.getElementById('lahir_korban').value;
+                const today = new Date();
+                const birthDate = new Date(birthdate);
+                const age = today.getFullYear() - birthDate.getFullYear();
+
+                // Adjust age if birthday hasn't occurred yet this year
+                if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
+                    age--;
+                }
+
+                document.getElementById('usia_korban').value = age;
+
+            })
+
+
+            $('#lahir_pelaku').on('change', function() {
+                const birthdate = document.getElementById('lahir_pelaku').value;
+                const today = new Date();
+                const birthDate = new Date(birthdate);
+                const age = today.getFullYear() - birthDate.getFullYear();
+
+                // Adjust age if birthday hasn't occurred yet this year
+                if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
+                    age--;
+                }
+
+                document.getElementById('usia_pelaku').value = age;
+
+            })
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <script>
+        $(function() {
+
+            var wrapper = document.getElementById("signature-pad"),
+                clearButton = wrapper.querySelector("[data-action=clear]"),
+                saveButton = wrapper.querySelector("[data-action=save]"),
+                canvas = wrapper.querySelector("canvas"),
+                signaturePad;
+
+            signaturePad = new SignaturePad(canvas, {
+                backgroundColor: "rgb(255,255,255)",
+            });
+            // canvas.select = function(){
+            //     window.scrollTo(0, 0);
+            //     document.body.scrollTop = 0;
+            // };
+            canvas.focus({
+                preventScroll: true
+            });
+            clearButton.addEventListener("click", function(event) {
+                signaturePad.clear();
+            });
+        });
+    </script>
 
 </x-app-layout>

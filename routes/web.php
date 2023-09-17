@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DependantDropdownController;
 use App\Http\Controllers\JenisKekerasanController;
 use App\Http\Controllers\JenisLayananController;
 use App\Http\Controllers\KegiatanController;
@@ -35,6 +36,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
+
+Route::get('provinces', 'DependentDropdownController@provinces')->name('provinces');
+Route::get('cities', 'DependentDropdownController@cities')->name('cities');
+Route::get('districts', 'DependentDropdownController@districts')->name('districts');
+Route::get('villages', [DependantDropdownController::class, 'villages'])->name('villages');
 
 // Route::get('/', [LandingpageController::class, 'index'])->name('index');
 
