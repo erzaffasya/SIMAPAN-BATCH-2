@@ -28,10 +28,6 @@
     <!-- Custom JS -->
     <script src="{{ asset('tadmin/assets/js/script.js') }}"></script>
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3IzKovEv9pbMJ-pLfP9cO7nTSJXIDPDU&libraries=places&callback=initMap"
-        async defer></script>
-
     <script>
         @if (session()->has('success'))
             toastr.success(
