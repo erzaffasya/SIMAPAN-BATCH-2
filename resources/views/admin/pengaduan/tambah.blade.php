@@ -119,7 +119,7 @@
                                             <div class="mb-3">
                                                 <label for="basicpill-phoneno-input" class="form-label">Petugas
                                                     Penerima</label>
-                                                <select class="form-select" name="petugas_penerima" name="customer">
+                                                <select class="form-select" name="petugas_penerima">
                                                     @foreach ($user as $item)
                                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
@@ -130,7 +130,7 @@
                                             <div class="mb-3">
                                                 <label for="basicpill-email-input" class="form-label">Petugas
                                                     Menangani</label>
-                                                <select class="form-select" name="petugas_menangani" name="customer">
+                                                <select class="form-select" name="petugas_menangani">
                                                     @foreach ($user as $item)
                                                         <option value="{{ $item->id }}">{{ $item->name }}
                                                         </option>
@@ -142,9 +142,9 @@
                                             <div class="mb-3">
                                                 <label for="basicpill-email-input" class="form-label">Jenis
                                                     Kekerasan/Non Kekerasan</label>
-                                                <select class="form-select" name="jenis_aduan" name="customer">
-                                                    <option value="">KDRT</option>
-                                                    <option value="">NON KDRT</option>
+                                                <select class="form-select" name="jenis_aduan">
+                                                    <option value="">Kekerasan</option>
+                                                    <option value="">Non Kekerasan</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -176,8 +176,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-vatno-input" class="form-label">Jenis
                                                         Kelamin Pelapor</label>
-                                                    <select class="form-select" name="jenis_kelamin_pelapor"
-                                                        name="customer">
+                                                    <select class="form-select" name="jenis_kelamin_pelapor">
                                                         <option value="">Laki-Laki</option>
                                                         <option value="">Perempuan</option>
                                                     </select>
@@ -261,8 +260,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Korban</label>
-                                                    <select class="form-select" name="jenis_kelamin_korban"
-                                                        name="customer">
+                                                    <select class="form-select" name="jenis_kelamin_korban">
                                                         <option value="">Laki-Laki</option>
                                                         <option value="">Perempuan</option>
                                                     </select>
@@ -280,8 +278,8 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Usia
                                                         Korban</label>
-                                                    <input type="number" readonly name="usia_korban" id="usia_korban"
-                                                        class="form-control">
+                                                    <input type="number" readonly name="usia_korban"
+                                                        id="usia_korban" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -359,7 +357,8 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Layanan
                                                         Yang Diberikan</label>
-                                                    <select class="form-select" multiple="true" name="layanan_id[]">
+                                                    <select class="form-select" multiple="true"
+                                                        name="jenis_layanan[]">
                                                         @foreach ($layanan as $item)
                                                             <option value="">{{ $item->jenis_layanan }}</option>
                                                         @endforeach
@@ -372,7 +371,7 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kekerasan</label>
                                                     <select class="form-select" multiple="true"
-                                                        name="jenis_kelamin_korban" name="layanan_id[]">
+                                                        name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
                                                             <option value="">{{ $item->jenis_kekerasan }}
                                                             </option>
@@ -414,8 +413,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Pelaku</label>
-                                                    <select class="form-select" name="jenis_kelamin_pelaku"
-                                                        name="customer">
+                                                    <select class="form-select" name="jenis_kelamin_pelaku">
                                                         <option value="">Laki-Laki</option>
                                                         <option value="">Perempuan</option>
                                                     </select>
@@ -433,8 +431,8 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Usia
                                                         Pelaku</label>
-                                                    <input type="number" readonly name="usia_pelaku" class="form-control"
-                                                        id="usia_pelaku">
+                                                    <input type="number" readonly name="usia_pelaku"
+                                                        class="form-control" id="usia_pelaku">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -517,8 +515,11 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">KDRT/NON KDRT</label>
-                                                    <input type="text" name="kdrt_nonkdrt" class="form-control"
-                                                        id="basicpill-servicetax-input">
+
+                                                    <select class="form-select" name="kdrt_nonkdrt">
+                                                        <option value="">KDRT</option>
+                                                        <option value="">NON KDRT</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
