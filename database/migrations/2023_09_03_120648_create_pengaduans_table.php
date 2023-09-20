@@ -35,7 +35,7 @@ class CreatePengaduansTable extends Migration
             $table->text("alamat_korban")->nullable();
             $table->string("kelurahan_korban")->nullable();
             $table->string("kecamatan_korban")->nullable();
-            $table->enum("pendidikan_korban",["SD","SMP","SMA","S1","S2","S3"])->nullable();
+            $table->string("pendidikan_korban")->nullable();
             $table->string("suku_korban")->nullable();
             $table->string("agama_korban")->nullable();
             $table->string("kewarganegaraan_korban")->nullable();
@@ -46,7 +46,7 @@ class CreatePengaduansTable extends Migration
             $table->string("lahir_pelaku")->nullable();
             $table->string("usia_pelaku")->nullable();
             $table->string("alamat_pelaku")->nullable();
-            $table->enum("pendidikan_pelaku",["SD","SMP","SMA","S1","S2","S3"])->nullable();
+            $table->string("pendidikan_pelaku")->nullable();
             $table->string("agama_pelaku")->nullable();
             $table->string("suku_pelaku")->nullable();
             $table->string("pekerjaan_pelaku")->nullable();
@@ -55,11 +55,10 @@ class CreatePengaduansTable extends Migration
             $table->string("tempat_kejadian")->nullable();
             $table->string("kdrt_nonkdrt")->nullable();
             $table->text("kronologis")->nullable();
-            $table->string("status")->nullable();
+            $table->enum("status",["Menunggu","Proses","Selesai"])->nullable();
             $table->text("keterangan")->nullable();
             $table->string("tandatangan_pelapor")->nullable();
             $table->text("dokumen")->nullable();
-
 
             $table->text("kk")->nullable();
             $table->text("akta")->nullable();

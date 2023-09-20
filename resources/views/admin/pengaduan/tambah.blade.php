@@ -537,7 +537,7 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Status
                                                         Kasus</label>
                                                     <select class="form-select" name="status">
-                                                        <option value="Pengaduan">Pengaduan</option>
+                                                        <option value="Menunggu">Menunggu</option>
                                                         <option value="Proses">Proses</option>
                                                         <option value="Selesai">Selesai</option>
                                                     </select>
