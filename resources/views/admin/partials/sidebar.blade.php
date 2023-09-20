@@ -26,7 +26,7 @@
                 <a href="javascript:void(0);"><i data-feather="columns"></i> <span> Pengaduan </span> <span
                         class="menu-arrow"></span></a>
                 <ul>
-                    <li><a href="{{ route('pengaduan.create') }}"
+                    <li><a href="{{ route('pengaduan.index') }}"
                             class="{{ Request::routeIs('pengaduan.*') ? 'active' : '' }}">Pengaduan</a>
                     </li>
                 </ul>

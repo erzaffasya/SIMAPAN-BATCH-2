@@ -41,7 +41,7 @@
                                     <td>{{ $item->status }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a class="me-3" href="{{ route('pengaduan.edit', $item->id) }}">
+                                            {{-- <a class="me-3" href="{{ route('pengaduan.edit', $item->id) }}">
                                                 <img src="{{ asset('tadmin/assets/img/icons/edit.svg') }}"
                                                     alt="img">
                                             </a>
@@ -51,7 +51,7 @@
                                                 data-message='{{ $item->name }}'>
                                                 <img src="{{ asset('tadmin/assets/img/icons/delete.svg') }}"
                                                     alt="img">
-                                            </a>
+                                            </a> --}}
                                         </div>
                                     </td>
                                 </tr>
