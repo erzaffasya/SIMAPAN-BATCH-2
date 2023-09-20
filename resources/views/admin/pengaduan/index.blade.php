@@ -2,12 +2,12 @@
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>User</h4>
-                <h6>Manajemen User</h6>
+                <h4>Pengaduan</h4>
+                <h6>Manajemen Pengaduan</h6>
             </div>
             <div class="page-btn">
-                <a href="{{ route('user.create') }}" class="btn btn-added"><img
-                        src="{{ asset('tadmin/assets/img/icons/plus.svg') }}" alt="img">Tambah User</a>
+                <a href="{{ route('pengaduan.create') }}" class="btn btn-added"><img
+                        src="{{ asset('tadmin/assets/img/icons/plus.svg') }}" alt="img">Tambah Pengaduan</a>
             </div>
         </div>
         <div class="card">
@@ -26,28 +26,28 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Nomor</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user as $item)
+                            @foreach ($Pengaduan as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->role }}</td>
+                                    <td>{{ $item->nomor }}</td>
+                                    <td>{{ $item->tanggal_registrasi }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a class="me-3" href="{{ route('user.edit', $item->id) }}">
+                                            <a class="me-3" href="{{ route('pengaduan.edit', $item->id) }}">
                                                 <img src="{{ asset('tadmin/assets/img/icons/edit.svg') }}"
                                                     alt="img">
                                             </a>
                                             <a class='confirm-text' href='javascript:void(0);' data-bs-toggle='modal'
                                                 data-bs-target='#deleteModal' data-id='{{ $item->id }}'
-                                                data-action='{{ route('user.destroy', $item->id) }}'
+                                                data-action='{{ route('pengaduan.destroy', $item->id) }}'
                                                 data-message='{{ $item->name }}'>
                                                 <img src="{{ asset('tadmin/assets/img/icons/delete.svg') }}"
                                                     alt="img">

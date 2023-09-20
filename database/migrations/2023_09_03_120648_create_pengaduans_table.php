@@ -19,7 +19,7 @@ class CreatePengaduansTable extends Migration
             $table->date("tanggal_registrasi")->nullable();
             $table->foreignId("petugas_penerima")->constrained("users");
             $table->foreignId("petugas_menangani")->constrained("users");
-            $table->enum("jenis_aduan",["KDRT", "NON KDRT"])->nullable();
+            $table->enum("jenis_aduan",["Kekerasan", "Non Kekerasan"])->nullable();
             $table->string("nama_pelapor")->nullable();
             $table->enum("jenis_kelamin_pelapor",["Laki-Laki","Perempuan"])->nullable();
             $table->text("alamat_pelapor")->nullable();
@@ -28,7 +28,7 @@ class CreatePengaduansTable extends Migration
 
             $table->string("nama_korban")->nullable();
             $table->string("nama_alias_korban")->nullable();
-            $table->Integer("nik_korban")->nullable();
+            $table->string("nik_korban")->nullable();
             $table->enum("jenis_kelamin_korban",["Laki-Laki","Perempuan"])->nullable();
             $table->string("lahir_korban")->nullable();
             $table->Integer("usia_korban")->nullable();
@@ -40,9 +40,6 @@ class CreatePengaduansTable extends Migration
             $table->string("agama_korban")->nullable();
             $table->string("kewarganegaraan_korban")->nullable();
             $table->string("pekerjaan_korban")->nullable();
-            $table->string("jenis_kekerasan1")->nullable();
-            $table->string("jenis_kekerasan2")->nullable();
-            $table->string("jenis_kekerasan3")->nullable();
 
             $table->string("nama_pelaku")->nullable();
             $table->string("jenis_kelamin_pelaku")->nullable();
@@ -53,8 +50,9 @@ class CreatePengaduansTable extends Migration
             $table->string("agama_pelaku")->nullable();
             $table->string("suku_pelaku")->nullable();
             $table->string("pekerjaan_pelaku")->nullable();
+            $table->string("hubungan_pelaku")->nullable();
             
-            $table->string("tempat_kejadian_perkara")->nullable();
+            $table->string("tempat_kejadian")->nullable();
             $table->string("kdrt_nonkdrt")->nullable();
             $table->text("kronologis")->nullable();
             $table->string("status")->nullable();

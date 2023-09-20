@@ -12,4 +12,14 @@ class Pengaduan extends Model
     protected $guarded = [];
 
     protected $primaryKey = 'id';
+
+    function jenisLayanan()
+    {
+        return $this->hasMany(JenisLayananPengaduan::class);
+    }
+
+    function jenisKekerasan()
+    {
+        return $this->hasMany(JenisKekerasanPengaduan::class);
+    }
 }

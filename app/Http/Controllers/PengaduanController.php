@@ -6,10 +6,12 @@ use App\Models\JenisKekerasan;
 use App\Models\JenisLayanan;
 use App\Models\Pengaduan;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Image;
+
 class PengaduanController extends Controller
 {
     public function index()
@@ -23,17 +25,53 @@ class PengaduanController extends Controller
         $user = User::all();
         $layanan = JenisLayanan::all();
         $kekerasan = JenisKekerasan::all();
-        
+
         $kota = \Indonesia::search('balikpapan')->allDistricts();
         // dd($kota);
-        return view('admin.pengaduan.tambah', compact('user','layanan','kekerasan', 'kota'));
+        return view('admin.pengaduan.tambah', compact('user', 'layanan', 'kekerasan', 'kota'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            // 'ft' => 'required'
-        ]);
+        // $request->validate([
+        //     // 'ft' => 'required'
+        // ]);
+
+        function convertToRoman($num)
+        {
+            $romans = array(
+                'I',
+                'II',
+                'III',
+                'IV',
+                'V',
+                'VI',
+                'VII',
+                'VIII',
+                'IX',
+                'X',
+                'XI',
+                'XII'
+            );
+
+            if ($num >= 1 && $num <= 12) {
+                return $romans[$num - 1];
+            } else {
+                return "";
+            }
+        }
+        $carbonTanggal = Carbon::createFromFormat("Y-m-d", $request->tanggal_registrasi);
+        $bulan = $carbonTanggal->format('n');
+        $tahun = $carbonTanggal->format('Y');
+        $roman_bulan = convertToRoman($bulan);
+        //create nomor
+        $max = Pengaduan::selectRaw("MAX(CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(nomor, '/', 1), '/', -1) AS UNSIGNED)) AS max_urut")->pluck("max_urut")->first();
+        if ($max) {
+            $new_urut = str_pad($max + 1, 3, '0', STR_PAD_LEFT);
+            $nomor = "$new_urut/PG/$roman_bulan/$tahun";
+        } else {
+            $nomor = "001/PG/$roman_bulan/$tahun";
+        }
 
         if (isset($request->ttd)) {
             $extention = $request->ttd->extension();
@@ -72,8 +110,6 @@ class PengaduanController extends Controller
             $datakk = null;
         }
 
-
-
         if (isset($request->fotokorban)) {
             $extention = $request->fotokorban->extension();
             $filefotokorban = time() . '.' . $extention;
@@ -82,20 +118,18 @@ class PengaduanController extends Controller
         } else {
             $datafotokorban = null;
         }
-        Pengaduan::create([
-            'nomor' => $request->nomor,
+        $Pengaduan = Pengaduan::create([
+            'nomor' => $nomor,
             'tanggal_registrasi' => $request->tanggal_registrasi,
             'petugas_penerima' => $request->petugas_penerima,
             'petugas_menangani' => $request->petugas_menangani,
             'jenis_aduan' => $request->jenis_aduan,
-
 
             'nama_pelapor' => $request->nama_pelapor,
             'jenis_kelamin_pelapor' => $request->jenis_kelamin_pelapor,
             'alamat_pelapor' => $request->alamat_pelapor,
             'hp_pelapor' => $request->hp_pelapor,
             'hubungan_korban' => $request->hubungan_korban,
-
 
             'nama_korban' => $request->nama_korban,
             'nama_alias_korban' => $request->nama_alias_korban,
@@ -113,7 +147,6 @@ class PengaduanController extends Controller
             'pekerjaan_korban' => $request->pekerjaan_korban,
             'jenis_kelamin_korban' => $request->jenis_kelamin_korban,
 
-
             'nama_pelaku' => $request->nama_pelaku,
             'jenis_kelamin_pelaku' => $request->jenis_kelamin_pelaku,
             'lahir_pelaku' => $request->lahir_pelaku,
@@ -125,11 +158,10 @@ class PengaduanController extends Controller
             'pekerjaan_pelaku' => $request->pekerjaan_pelaku,
             'hubungan_pelaku' => $request->hubungan_pelaku,
 
-
             'tempat_kejadian' => $request->tempat_kejadian,
             'kdrt_nonkdrt' => $request->kdrt_nonkdrt,
             'kronologis' => $request->kronologis,
-            'status_kasus' => $request->status_kasus,
+            'status' => $request->status,
             'keterangan' => $request->keterangan,
             'ttd' => $datattd,
             'akta' => $dataakta,
@@ -138,8 +170,25 @@ class PengaduanController extends Controller
             'foto_korban' => $datafotokorban
         ]);
 
+        // dd($request->all());
+        for ($i = 0; $i < count($request->jenis_layanan); $i++) {
+            $dataLayanan[] = [
+                'pengaduan_id' => $Pengaduan->id,
+                'jenis_layanan_id' => $request->jenis_layanan[$i]
+            ];
+        }
+
+        $Pengaduan->jenisLayanan()->createMany($dataLayanan);
 
 
+        for ($i = 0; $i < count($request->jenis_kekerasan); $i++) {
+            $dataKekerasan[] = [
+                'pengaduan_id' => $Pengaduan->id,
+                'jenis_kekerasan_id' => $request->jenis_kekerasan[$i]
+            ];
+        }
+
+        $Pengaduan->jenisKekerasan()->createMany($dataKekerasan);
         // 'foto' => $file_name,
         return redirect()->route('pengaduan.index')
             ->with('success', 'Pengaduan Berhasil Ditambahkan');
