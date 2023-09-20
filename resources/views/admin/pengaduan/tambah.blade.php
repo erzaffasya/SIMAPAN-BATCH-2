@@ -41,60 +41,61 @@
                     <h4 class="card-title mb-0">Form Pengaduan</h4>
                 </div>
                 <div class="card-body">
-                    <div id="basic-pills-wizard" class="twitter-bs-wizard">
-                        <ul class="twitter-bs-wizard-nav">
-                            <li class="nav-item">
-                                <a href="#form-pengaduan-wizard" class="nav-link" data-toggle="tab">
-                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Form Pengaduan">
-                                        <i class="far fa-user"></i>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#form-pelapor-wizard" class="nav-link" data-toggle="tab">
-                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Data Pelapor">
-                                        <i class="fas fa-map-pin"></i>
-                                    </div>
-                                </a>
-                            </li>
+                    <form method="post" action="{{route('pengaduan.store')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div id="basic-pills-wizard" class="twitter-bs-wizard">
+                            <ul class="twitter-bs-wizard-nav">
+                                <li class="nav-item">
+                                    <a href="#form-pengaduan-wizard" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Form Pengaduan">
+                                            <i class="far fa-user"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#form-pelapor-wizard" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Data Pelapor">
+                                            <i class="fas fa-map-pin"></i>
+                                        </div>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="#form-korban-wizard" class="nav-link" data-toggle="tab">
-                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Data Korban">
-                                        <i class="fas fa-credit-card"></i>
-                                    </div>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="#form-korban-wizard" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Data Korban">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="#form-pelaku-wizard" class="nav-link" data-toggle="tab">
-                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Data Pelaku">
-                                        <i class="fas fa-credit-card"></i>
-                                    </div>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href="#form-pelaku-wizard" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Data Pelaku">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                    </a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a href="#form-kronologis-wizard" class="nav-link" data-toggle="tab">
-                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="Data Kronologis">
-                                        <i class="fas fa-credit-card"></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- wizard-nav -->
+                                <li class="nav-item">
+                                    <a href="#form-kronologis-wizard" class="nav-link" data-toggle="tab">
+                                        <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="Data Kronologis">
+                                            <i class="fas fa-credit-card"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- wizard-nav -->
 
-                        <div class="tab-content twitter-bs-wizard-tab-content">
-                            <div class="tab-pane" id="form-pengaduan-wizard">
-                                <div class="mb-4">
-                                    <h5>Pendaftaran Pengaduan</h5>
-                                </div>
-                                <form>
+                            <div class="tab-content twitter-bs-wizard-tab-content">
+                                <div class="tab-pane" id="form-pengaduan-wizard">
+                                    <div class="mb-4">
+                                        <h5>Pendaftaran Pengaduan</h5>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="mb-3">
@@ -143,25 +144,24 @@
                                                 <label for="basicpill-email-input" class="form-label">Jenis
                                                     Kekerasan/Non Kekerasan</label>
                                                 <select class="form-select" name="jenis_aduan">
-                                                    <option value="">Kekerasan</option>
-                                                    <option value="">Non Kekerasan</option>
+                                                    <option value="Kekerasan">Kekerasan</option>
+                                                    <option value="Non Kekerasan">Non Kekerasan</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                                <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                    <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                            onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- tab pane -->
-                            <div class="tab-pane" id="form-pelapor-wizard">
-                                <div>
-                                    <div class="mb-4">
-                                        <h5>Data Pelapor</h5>
-                                    </div>
-                                    <form>
+                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
+                                                onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- tab pane -->
+                                <div class="tab-pane" id="form-pelapor-wizard">
+                                    <div>
+                                        <div class="mb-4">
+                                            <h5>Data Pelapor</h5>
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
@@ -177,8 +177,8 @@
                                                     <label for="basicpill-vatno-input" class="form-label">Jenis
                                                         Kelamin Pelapor</label>
                                                     <select class="form-select" name="jenis_kelamin_pelapor">
-                                                        <option value="">Laki-Laki</option>
-                                                        <option value="">Perempuan</option>
+                                                        <option value="Laki-Laki">Laki-Laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -209,24 +209,24 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i>
-                                                Previous</a></li>
-                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane" id="form-korban-wizard">
-                                <div>
-                                    <div class="mb-4">
-                                        <h5>Data Korban</h5>
+                                        <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                            <li class="previous"><a href="javascript: void(0);"
+                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                        class="bx bx-chevron-left me-1"></i>
+                                                    Previous</a></li>
+                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
+                                                    onclick="nextTab()">Next <i
+                                                        class="bx bx-chevron-right ms-1"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <form>
+                                </div>
+
+                                <div class="tab-pane" id="form-korban-wizard">
+                                    <div>
+                                        <div class="mb-4">
+                                            <h5>Data Korban</h5>
+                                        </div>
                                         <div class="row">
 
                                             <div class="col-lg-6">
@@ -261,8 +261,8 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Korban</label>
                                                     <select class="form-select" name="jenis_kelamin_korban">
-                                                        <option value="">Laki-Laki</option>
-                                                        <option value="">Perempuan</option>
+                                                        <option value="Laki-Laki">Laki-Laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -360,7 +360,8 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_layanan[]">
                                                         @foreach ($layanan as $item)
-                                                            <option value="">{{ $item->jenis_layanan }}</option>
+                                                            <option value="{{ $item->id }}">
+                                                                {{ $item->jenis_layanan }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -373,30 +374,31 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
-                                                            <option value="">{{ $item->jenis_kekerasan }}
+                                                            <option value="{{ $item->id }}">
+                                                                {{ $item->jenis_kekerasan }}
                                                             </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i>
-                                                Previous</a></li>
-                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="form-pelaku-wizard">
-                                <div>
-                                    <div class="mb-4">
-                                        <h5>Data Pelaku</h5>
+                                        <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                            <li class="previous"><a href="javascript: void(0);"
+                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                        class="bx bx-chevron-left me-1"></i>
+                                                    Previous</a></li>
+                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
+                                                    onclick="nextTab()">Next <i
+                                                        class="bx bx-chevron-right ms-1"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <form>
+                                </div>
+                                <div class="tab-pane" id="form-pelaku-wizard">
+                                    <div>
+                                        <div class="mb-4">
+                                            <h5>Data Pelaku</h5>
+                                        </div>
                                         <div class="row">
 
                                             <div class="col-lg-6">
@@ -414,8 +416,8 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kelamin Pelaku</label>
                                                     <select class="form-select" name="jenis_kelamin_pelaku">
-                                                        <option value="">Laki-Laki</option>
-                                                        <option value="">Perempuan</option>
+                                                        <option value="Laki-Laki">Laki-Laki</option>
+                                                        <option value="Perempuan">Perempuan</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -483,24 +485,24 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i>
-                                                Previous</a></li>
-                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- tab pane -->
-                            <div class="tab-pane" id="form-kronologis-wizard">
-                                <div>
-                                    <div class="mb-4">
-                                        <h5>Data Kronologis</h5>
+                                        <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                            <li class="previous"><a href="javascript: void(0);"
+                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                        class="bx bx-chevron-left me-1"></i>
+                                                    Previous</a></li>
+                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
+                                                    onclick="nextTab()">Next <i
+                                                        class="bx bx-chevron-right ms-1"></i></a>
+                                            </li>
+                                        </ul>
                                     </div>
-                                    <form>
+                                </div>
+                                <!-- tab pane -->
+                                <div class="tab-pane" id="form-kronologis-wizard">
+                                    <div>
+                                        <div class="mb-4">
+                                            <h5>Data Kronologis</h5>
+                                        </div>
                                         <div class="row">
 
                                             <div class="col-lg-6">
@@ -517,8 +519,8 @@
                                                         class="form-label">KDRT/NON KDRT</label>
 
                                                     <select class="form-select" name="kdrt_nonkdrt">
-                                                        <option value="">KDRT</option>
-                                                        <option value="">NON KDRT</option>
+                                                        <option value="KDRT">KDRT</option>
+                                                        <option value="NON KDRT">NON KDRT</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -535,9 +537,9 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Status
                                                         Kasus</label>
                                                     <select class="form-select" name="status_kasus">
-                                                        <option value="">Pengaduan</option>
-                                                        <option value="">Proses</option>
-                                                        <option value="">Selesai</option>
+                                                        <option value="Pengaduan">Pengaduan</option>
+                                                        <option value="Proses">Proses</option>
+                                                        <option value="Selesai">Selesai</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -598,26 +600,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i>
-                                                Previous</a></li>
-                                        <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary"
-                                                data-bs-toggle="modal" data-bs-target=".confirmModal">Save
-                                                Changes</a></li>
-                                    </ul>
+                                        <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                            <li class="previous"><a href="javascript: void(0);"
+                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                        class="bx bx-chevron-left me-1"></i>
+                                                    Previous</a></li>
+                                            <button class="btn btn-primary float-end" >Save
+                                                Changes</button>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- tab pane -->
-
                         </div>
-                        <!-- end tab content -->
-                    </div>
+                    </form>
                 </div>
+                <!-- tab pane -->
+
             </div>
-            <!-- end card body -->
+            <!-- end tab content -->
         </div>
+    </div>
+    </div>
+    <!-- end card body -->
+    </div>
     </div>
     <!-- /Wizard -->
     </div>
