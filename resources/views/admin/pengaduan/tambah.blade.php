@@ -294,7 +294,7 @@
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Kecamatan</label>
                                                     <select class="form-select" id="kecamatan"
-                                                        name="kecamata_korban">
+                                                        name="kecamatan_korban">
                                                         @foreach ($kota as $item)
                                                             <option value="{{ $item->id }}">{{ $item->name }}
                                                             </option>
@@ -536,7 +536,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Status
                                                         Kasus</label>
-                                                    <select class="form-select" name="status_kasus">
+                                                    <select class="form-select" name="status">
                                                         <option value="Pengaduan">Pengaduan</option>
                                                         <option value="Proses">Proses</option>
                                                         <option value="Selesai">Selesai</option>
