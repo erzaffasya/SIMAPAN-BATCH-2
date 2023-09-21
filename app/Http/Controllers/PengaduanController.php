@@ -172,7 +172,7 @@ class PengaduanController extends Controller
             'kronologis' => $request->kronologis,
             'status' => $request->status,
             'keterangan' => $request->keterangan,
-            'ttd' => $file,
+            'ttd' => $filettd,
             'akta' => $dataakta,
             'ktp' => $dataktp,
             'kk' => $datakk,
