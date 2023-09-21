@@ -33,6 +33,7 @@ class PengaduanController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         // $request->validate([
         //     // 'ft' => 'required'
         // ]);
@@ -73,22 +74,13 @@ class PengaduanController extends Controller
             $nomor = "001/PG/$roman_bulan/$tahun";
         }
 
-        if (isset($request->ttd)) {
-            $extention = $request->ttd->extension();
-            $filettd = time() . '.' . $extention;
-            $datattd = "storage/ttd/" . $filettd;
-            $request->ttd->storeAs('public/Berita', $filettd);
-        } else {
-            $datattd = null;
-        }
-
         if (isset($request->akta)) {
             $extention = $request->akta->extension();
             $fileakta = time() . '.' . $extention;
             $dataakta = "storage/akta/" . $fileakta;
             $request->akta->storeAs('public/akta', $fileakta);
         } else {
-            $datattd = null;
+            $dataakta = null;
         }
 
         if (isset($request->ktp)) {
@@ -118,6 +110,23 @@ class PengaduanController extends Controller
         } else {
             $datafotokorban = null;
         }
+
+        // dd($request->signature);
+
+        $data_uri = $request->signature;
+        $encoded_image = explode(",", $data_uri)[1];
+        $decoded_image = base64_decode($encoded_image);
+        $path = storage_path("app/public/ttd/");
+        $filettd = uniqid() . '.png';
+        $file = $path . $filettd;
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path, $mode = 0777, true, true);
+        }
+
+        file_put_contents($file, $decoded_image);
+
+
         $Pengaduan = Pengaduan::create([
             'nomor' => $nomor,
             'tanggal_registrasi' => $request->tanggal_registrasi,
@@ -163,7 +172,7 @@ class PengaduanController extends Controller
             'kronologis' => $request->kronologis,
             'status' => $request->status,
             'keterangan' => $request->keterangan,
-            'ttd' => $datattd,
+            'ttd' => $file,
             'akta' => $dataakta,
             'ktp' => $dataktp,
             'kk' => $datakk,

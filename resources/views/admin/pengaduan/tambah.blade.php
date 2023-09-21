@@ -41,7 +41,7 @@
                     <h4 class="card-title mb-0">Form Pengaduan</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{route('pengaduan.store')}}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('pengaduan.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div id="basic-pills-wizard" class="twitter-bs-wizard">
                             <ul class="twitter-bs-wizard-nav">
@@ -556,14 +556,17 @@
                                                         Tangan</label>
                                                     <div class="m-signature-pad">
                                                         <div class="m-signature-pad--body">
-                                                            <canvas style="border: 2px dashed #ccc"></canvas>
+                                                            <canvas name="ttd"
+                                                                style="border: 2px dashed #ccc"></canvas>
                                                         </div>
 
                                                         <div class="m-signature-pad--footer">
                                                             <button type="button" class="btn btn-sm btn-secondary"
                                                                 data-action="clear">Clear</button>
-                                                            {{-- <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button> --}}
+                                                            <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button>
                                                         </div>
+
+                                                        <input type="hidden" name="signature" id="signatureData">
                                                     </div>
                                                 </div>
                                             </div>
@@ -605,7 +608,7 @@
                                                     class="btn btn-primary" onclick="nextTab()"><i
                                                         class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <button class="btn btn-primary float-end" >Save
+                                            <button class="btn btn-primary float-end">Save
                                                 Changes</button>
                                         </ul>
                                     </div>
@@ -686,25 +689,35 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script>
         $(function() {
-
             var wrapper = document.getElementById("signature-pad"),
                 clearButton = wrapper.querySelector("[data-action=clear]"),
                 saveButton = wrapper.querySelector("[data-action=save]"),
                 canvas = wrapper.querySelector("canvas"),
                 signaturePad;
-
+    
             signaturePad = new SignaturePad(canvas, {
                 backgroundColor: "rgb(255,255,255)",
             });
-            // canvas.select = function(){
-            //     window.scrollTo(0, 0);
-            //     document.body.scrollTop = 0;
-            // };
-            canvas.focus({
-                preventScroll: true
-            });
+    
+            // Function to save the signature
+            function saveSignature() {
+                const signatureData = signaturePad.toDataURL();
+    
+                // Set the signature data to the hidden input
+                document.getElementById('signatureData').value = signatureData;
+    
+                // Optionally, you can submit the form here
+                // document.getElementById('yourFormId').submit();
+            }
+    
+            // Event listener to clear the signature
             clearButton.addEventListener("click", function(event) {
                 signaturePad.clear();
+            });
+    
+            // Event listener to save the signature
+            saveButton.addEventListener("click", function(event) {
+                saveSignature();
             });
         });
     </script>
