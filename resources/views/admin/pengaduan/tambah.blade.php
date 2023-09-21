@@ -551,7 +551,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
-                                                <div class="mb-3">
+                                                <div class="mb-3" id="signature-pad">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tanda
                                                         Tangan</label>
                                                     <div class="m-signature-pad">
