@@ -204,8 +204,8 @@ class PengaduanController extends Controller
 
     public function show($id)
     {
-        // $Pengaduan =  Pengaduan::find($id);
-        // return view('admin.pengaduan.Detailpengaduan.index', compact('Pengaduan', 'DetailPengaduan'));
+        $pengaduan = Pengaduan::with(["jenisLayanan", "jenisKekerasan"])->where("id", $id)->first();
+        return view('admin.pengaduan.view', compact('pengaduan'));
     }
 
 
@@ -278,27 +278,25 @@ class PengaduanController extends Controller
         $pengaduan->ktp = $request->ktp;
         $pengaduan->ttd = $request->ttd;
 
-        if ($request->has("foto")) {
-            $path = storage_path("app/public/img/pengaduan/");
-            if (File::exists($path)) {
-                Storage::delete("$path$pengaduan->foto");
+        function saveStorage($pengaduan, $request, $name)
+        {
+            if ($file = $request->{$name}) {
+                if ($pengaduan->{$name} != null) {
+                    if (Storage::exists("app/public" . str_replace("storage", "", $pengaduan->{$name}))) {
+                        Storage::delete("app/public" . str_replace("storage", "", $pengaduan->{$name}));
+                    }
+                }
+                $filename = time() . '.' . $file->extension();
+                $file->storeAs("public/$name", $filename);
+                $pengaduan->{$name} = "storage/$name/" . $filename;
             }
-            $extention = $request->foto->extension();
-            $file_name = time() . '.' . $extention;
-            $image = $request->file('foto');
-            $image = Image::make($request->file('foto'));
-            $image->resize(720, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $path = storage_path("app/public/img/pengaduan/");
-            if (!File::exists($path)) {
-                File::makeDirectory($path, $mode = 0777, true, true);
-            }
-            $image->save($path . $file_name, 80);
-
-            $pengaduan->foto = $file_name;
         }
+        saveStorage($pengaduan, $request, "ktp");
+        saveStorage($pengaduan, $request, "foto_korban");
+        saveStorage($pengaduan, $request, "akta");
+        saveStorage($pengaduan, $request, "kk");
+        saveStorage($pengaduan, $request, "dokumen");
+
         $pengaduan->save();
         return redirect()->route('pengaduan.index')
             ->with('success', 'Pengaduan Berhasil Diubah');

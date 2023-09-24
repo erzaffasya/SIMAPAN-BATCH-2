@@ -1,4 +1,3 @@
-@dd($pengaduan)
 <x-app-layout>
     <style>
         .wrapper {
@@ -42,8 +41,10 @@
                     <h4 class="card-title mb-0">Form Pengaduan</h4>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="{{ route('pengaduan.store') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('pengaduan.update', $pengaduan->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div id="basic-pills-wizard" class="twitter-bs-wizard">
                             <ul class="twitter-bs-wizard-nav">
                                 <li class="nav-item">
