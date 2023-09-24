@@ -102,11 +102,11 @@ class PengaduanController extends Controller
             $datakk = null;
         }
 
-        if (isset($request->fotokorban)) {
-            $extention = $request->fotokorban->extension();
+        if (isset($request->foto_korban)) {
+            $extention = $request->foto_korban->extension();
             $filefotokorban = time() . '.' . $extention;
             $datafotokorban = "storage/fotokorban/" . $filefotokorban;
-            $request->fotokorban->storeAs('public/fotokorban', $filefotokorban);
+            $request->foto_korban->storeAs('public/fotokorban', $filefotokorban);
         } else {
             $datafotokorban = null;
         }
