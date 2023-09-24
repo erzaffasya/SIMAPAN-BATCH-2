@@ -154,7 +154,6 @@ class PengaduanController extends Controller
             'suku_korban' => $request->suku_korban,
             'kewarganegaraan_korban' => $request->kewarganegaraan_korban,
             'pekerjaan_korban' => $request->pekerjaan_korban,
-            'jenis_kelamin_korban' => $request->jenis_kelamin_korban,
 
             'nama_pelaku' => $request->nama_pelaku,
             'jenis_kelamin_pelaku' => $request->jenis_kelamin_pelaku,
@@ -205,49 +204,100 @@ class PengaduanController extends Controller
 
     public function show($id)
     {
-        // $Pengaduan =  Pengaduan::find($id);
-        // return view('admin.pengaduan.Detailpengaduan.index', compact('Pengaduan', 'DetailPengaduan'));
+        $pengaduan = Pengaduan::with(["jenisLayanan", "jenisKekerasan"])->where("id", $id)->first();
+        return view('admin.pengaduan.view', compact('pengaduan'));
     }
 
 
     public function edit($id)
     {
-        $Pengaduan = Pengaduan::find($id);
-        return view('admin.pengaduan.ubah', compact('Pengaduan'));
+
+        $user = User::all();
+        $layanan = JenisLayanan::all();
+        $kekerasan = JenisKekerasan::all();
+        $kota = \Indonesia::search('balikpapan')->allDistricts();
+
+        $pengaduan = Pengaduan::findOrFail($id);
+        return view('admin.pengaduan.ubah', compact('pengaduan', 'user', 'layanan', 'kekerasan', 'kota'));
     }
 
     public function update(Request $request, $id)
     {
-        $Pengaduan = Pengaduan::findOrFail($id);
-        $Pengaduan->pengaduan = $request->pengaduan;
-        $Pengaduan->deskripsi = $request->deskripsi;
-        $Pengaduan->latitude = $request->latitude;
-        $Pengaduan->longitude = $request->longitude;
-        $Pengaduan->deskripsi_map = $request->deskripsi_map;
-        $Pengaduan->link_map = $request->link_map;
+        $pengaduan = Pengaduan::findOrFail($id);
 
-        if ($request->has("foto")) {
-            $path = storage_path("app/public/img/pengaduan/");
-            if (File::exists($path)) {
-                Storage::delete("$path$Pengaduan->foto");
+        $pengaduan->nomor = $request->nomor;
+        $pengaduan->tanggal_registrasi = $request->tanggal_registrasi;
+        $pengaduan->petugas_penerima = $request->petugas_penerima;
+        $pengaduan->petugas_menangani = $request->petugas_menangani;
+        $pengaduan->jenis_aduan = $request->jenis_aduan;
+
+        $pengaduan->nama_pelapor = $request->nama_pelapor;
+        $pengaduan->jenis_kelamin_pelapor = $request->jenis_kelamin_pelapor;
+        $pengaduan->alamat_pelapor = $request->alamat_pelapor;
+        $pengaduan->hp_pelapor = $request->hp_pelapor;
+        $pengaduan->hubungan_korban = $request->hubungan_korban;
+
+        $pengaduan->nama_korban = $request->nama_korban;
+        $pengaduan->nama_alias_korban = $request->nama_alias_korban;
+        $pengaduan->nik_korban = $request->nik_korban;
+        $pengaduan->jenis_kelamin_korban = $request->jenis_kelamin_korban;
+        $pengaduan->lahir_korban = $request->lahir_korban;
+        $pengaduan->usia_korban = $request->usia_korban;
+        $pengaduan->alamat_korban = $request->alamat_korban;
+        $pengaduan->kelurahan_korban = $request->kelurahan_korban;
+        $pengaduan->kecamatan_korban = $request->kecamatan_korban;
+        $pengaduan->pendidikan_korban = $request->pendidikan_korban;
+        $pengaduan->suku_korban = $request->suku_korban;
+        $pengaduan->agama_korban = $request->agama_korban;
+        $pengaduan->kewarganegaraan_korban = $request->kewarganegaraan_korban;
+        $pengaduan->pekerjaan_korban = $request->pekerjaan_korban;
+
+        $pengaduan->nama_pelaku = $request->nama_pelaku;
+        $pengaduan->jenis_kelamin_pelaku = $request->jenis_kelamin_pelaku;
+        $pengaduan->lahir_pelaku = $request->lahir_pelaku;
+        $pengaduan->usia_pelaku = $request->usia_pelaku;
+        $pengaduan->alamat_pelaku = $request->alamat_pelaku;
+        $pengaduan->pendidikan_pelaku = $request->pendidikan_pelaku;
+        $pengaduan->agama_pelaku = $request->agama_pelaku;
+        $pengaduan->suku_pelaku = $request->suku_pelaku;
+        $pengaduan->pekerjaan_pelaku = $request->pekerjaan_pelaku;
+        $pengaduan->hubungan_pelaku = $request->hubungan_pelaku;
+
+        $pengaduan->tempat_kejadian = $request->tempat_kejadian;
+        $pengaduan->kdrt_nonkdrt = $request->kdrt_nonkdrt;
+        $pengaduan->kronologis = $request->kronologis;
+        $pengaduan->status = $request->status;
+        $pengaduan->keterangan = $request->keterangan;
+
+        $pengaduan->tandatangan_pelapor = $request->tandatangan_pelapor;
+
+        $pengaduan->dokumen = $request->dokumen;
+        $pengaduan->kk = $request->kk;
+        $pengaduan->akta = $request->akta;
+        $pengaduan->foto_korban = $request->foto_korban;
+        $pengaduan->ktp = $request->ktp;
+        $pengaduan->ttd = $request->ttd;
+
+        function saveStorage($pengaduan, $request, $name)
+        {
+            if ($file = $request->{$name}) {
+                if ($pengaduan->{$name} != null) {
+                    if (Storage::exists("app/public" . str_replace("storage", "", $pengaduan->{$name}))) {
+                        Storage::delete("app/public" . str_replace("storage", "", $pengaduan->{$name}));
+                    }
+                }
+                $filename = time() . '.' . $file->extension();
+                $file->storeAs("public/$name", $filename);
+                $pengaduan->{$name} = "storage/$name/" . $filename;
             }
-            $extention = $request->foto->extension();
-            $file_name = time() . '.' . $extention;
-            $image = $request->file('foto');
-            $image = Image::make($request->file('foto'));
-            $image->resize(720, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $path = storage_path("app/public/img/pengaduan/");
-            if (!File::exists($path)) {
-                File::makeDirectory($path, $mode = 0777, true, true);
-            }
-            $image->save($path . $file_name, 80);
-
-            $Pengaduan->foto = $file_name;
         }
-        $Pengaduan->save();
+        saveStorage($pengaduan, $request, "ktp");
+        saveStorage($pengaduan, $request, "foto_korban");
+        saveStorage($pengaduan, $request, "akta");
+        saveStorage($pengaduan, $request, "kk");
+        saveStorage($pengaduan, $request, "dokumen");
+
+        $pengaduan->save();
         return redirect()->route('pengaduan.index')
             ->with('success', 'Pengaduan Berhasil Diubah');
     }

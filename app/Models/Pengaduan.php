@@ -13,6 +13,12 @@ class Pengaduan extends Model
 
     protected $primaryKey = 'id';
 
+    protected $casts = [
+        "tanggal_registrasi" => "date:Y-m-d",
+        "lahir_korban" => "date:Y-m-d",
+        "lahir_pelaku" => "date:Y-m-d",
+    ];
+
     function jenisLayanan()
     {
         return $this->hasMany(JenisLayananPengaduan::class);
