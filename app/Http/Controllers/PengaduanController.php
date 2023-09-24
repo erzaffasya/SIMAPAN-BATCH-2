@@ -271,13 +271,6 @@ class PengaduanController extends Controller
 
         $pengaduan->tandatangan_pelapor = $request->tandatangan_pelapor;
 
-        $pengaduan->dokumen = $request->dokumen;
-        $pengaduan->kk = $request->kk;
-        $pengaduan->akta = $request->akta;
-        $pengaduan->foto_korban = $request->foto_korban;
-        $pengaduan->ktp = $request->ktp;
-        $pengaduan->ttd = $request->ttd;
-
         function saveStorage($pengaduan, $request, $name)
         {
             if ($file = $request->{$name}) {

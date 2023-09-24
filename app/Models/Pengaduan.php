@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravolt\Indonesia\Models\Kecamatan;
+use Laravolt\Indonesia\Models\Kelurahan;
 
 class Pengaduan extends Model
 {
@@ -24,8 +26,38 @@ class Pengaduan extends Model
         return $this->hasMany(JenisLayananPengaduan::class);
     }
 
+    function lJenisLayanan()
+    {
+        return $this->hasManyThrough(JenisLayanan::class, JenisLayananPengaduan::class, "pengaduan_id", "id", "id", "jenis_layanan_id");
+    }
+
+    function lJenisKekerasan()
+    {
+        return $this->hasManyThrough(JenisKekerasan::class, JenisKekerasanPengaduan::class, "pengaduan_id", "id", "id", "jenis_kekerasan_id");
+    }
+
     function jenisKekerasan()
     {
         return $this->hasMany(JenisKekerasanPengaduan::class);
+    }
+
+    function petugasPenerima()
+    {
+        return $this->belongsTo(User::class, "petugas_penerima");
+    }
+
+    function petugasMenangani()
+    {
+        return $this->belongsTo(User::class, "petugas_menangani");
+    }
+
+    function kecamatanKorban()
+    {
+        return $this->belongsTo(Kecamatan::class, "kecamatan_korban");
+    }
+
+    function kelurahanKorban()
+    {
+        return $this->belongsTo(Kelurahan::class, "kelurahan_korban");
     }
 }

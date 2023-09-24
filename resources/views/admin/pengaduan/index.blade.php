@@ -45,6 +45,10 @@
                                                 <img src="{{ asset('tadmin/assets/img/icons/edit.svg') }}"
                                                     alt="img">
                                             </a>
+                                            <a class="me-3" href="{{ route('pengaduan.show', $item->id) }}">
+                                                <img src="{{ asset('tadmin/assets/img/icons/search.svg') }}"
+                                                    alt="img">
+                                            </a>
                                             <a class='confirm-text' href='javascript:void(0);' data-bs-toggle='modal'
                                                 data-bs-target='#deleteModal' data-id='{{ $item->id }}'
                                                 data-action='{{ route('pengaduan.destroy', $item->id) }}'
