@@ -2,7 +2,7 @@
     <div id="sidebar-menu" class="sidebar-menu">
         <ul>
             <li>
-                <a href="#"><img src="{{ asset('tadmin/assets/img/icons/dashboard.svg') }}" alt="img"><span>
+                <a href="{{route('dashboard')}}"><img src="{{ asset('tadmin/assets/img/icons/dashboard.svg') }}" alt="img"><span>
                         Dashboard</span> </a>
             </li>
 

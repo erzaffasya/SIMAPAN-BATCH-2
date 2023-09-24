@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DependantDropdownController;
 use App\Http\Controllers\JenisKekerasanController;
 use App\Http\Controllers\JenisLayananController;
@@ -33,9 +34,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('provinces', 'DependentDropdownController@provinces')->name('provinces');
 Route::get('cities', 'DependentDropdownController@cities')->name('cities');
