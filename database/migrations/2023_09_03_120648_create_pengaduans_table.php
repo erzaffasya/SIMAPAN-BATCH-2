@@ -53,6 +53,7 @@ class CreatePengaduansTable extends Migration
             $table->string("hubungan_pelaku")->nullable();
             
             $table->string("tempat_kejadian")->nullable();
+            $table->string("difabel_nondifabel")->nullable();
             $table->string("kdrt_nonkdrt")->nullable();
             $table->text("kronologis")->nullable();
             $table->enum("status",["Menunggu","Proses","Selesai"])->nullable();

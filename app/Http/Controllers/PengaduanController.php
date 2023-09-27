@@ -165,7 +165,7 @@ class PengaduanController extends Controller
             'suku_pelaku' => $request->suku_pelaku,
             'pekerjaan_pelaku' => $request->pekerjaan_pelaku,
             'hubungan_pelaku' => $request->hubungan_pelaku,
-
+            'difabel_nondifabel' => $request->difabel_nondifabel,
             'tempat_kejadian' => $request->tempat_kejadian,
             'kdrt_nonkdrt' => $request->kdrt_nonkdrt,
             'kronologis' => $request->kronologis,
@@ -242,6 +242,7 @@ class PengaduanController extends Controller
         $pengaduan->nik_korban = $request->nik_korban;
         $pengaduan->jenis_kelamin_korban = $request->jenis_kelamin_korban;
         $pengaduan->lahir_korban = $request->lahir_korban;
+        $pengaduan->difabel_nondifabel = $request->difabel_nondifabel;
         $pengaduan->usia_korban = $request->usia_korban;
         $pengaduan->alamat_korban = $request->alamat_korban;
         $pengaduan->kelurahan_korban = $request->kelurahan_korban;

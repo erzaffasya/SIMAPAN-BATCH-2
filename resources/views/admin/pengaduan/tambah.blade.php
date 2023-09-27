@@ -534,6 +534,15 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input" class="form-label">DIFABEL/NON DIFABEL</label>
+                                                    <select class="form-select" name="difabel_nondifabel">
+                                                        <option value="DIFABEL">DIFABEL</option>
+                                                        <option value="NON DIFABEL">NON DIFABEL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Status
                                                         Kasus</label>
                                                     <select class="form-select" name="status">
@@ -550,26 +559,7 @@
                                                     <textarea name="keterangan" class="form-control"></textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3" id="signature-pad">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda
-                                                        Tangan</label>
-                                                    <div class="m-signature-pad">
-                                                        <div class="m-signature-pad--body">
-                                                            <canvas name="ttd"
-                                                                style="border: 2px dashed #ccc"></canvas>
-                                                        </div>
-
-                                                        <div class="m-signature-pad--footer">
-                                                            <button type="button" class="btn btn-sm btn-secondary"
-                                                                data-action="clear">Clear</button>
-                                                            <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button>
-                                                        </div>
-
-                                                        <input type="hidden" name="signature" id="signatureData">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                         
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input"
@@ -600,6 +590,26 @@
                                                         Korban</label>
                                                     <input type="file" name="foto_korban" class="form-control"
                                                         id="basicpill-servicetax-input">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3" id="signature-pad">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda
+                                                        Tangan</label>
+                                                    <div class="m-signature-pad">
+                                                        <div class="m-signature-pad--body">
+                                                            <canvas name="ttd"
+                                                                style="border: 2px dashed #ccc"></canvas>
+                                                        </div>
+
+                                                        <div class="m-signature-pad--footer">
+                                                            <button type="button" class="btn btn-sm btn-secondary"
+                                                                data-action="clear">Clear</button>
+                                                            <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button>
+                                                        </div>
+
+                                                        <input type="hidden" name="signature" id="signatureData">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

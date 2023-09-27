@@ -587,6 +587,15 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
+                                                    <label for="basicpill-servicetax-input" class="form-label">DIFABEL/NON DIFABEL</label>
+                                                    <select class="form-select" name="difabel_nondifabel">
+                                                        <option value="DIFABEL"  {{ $pengaduan->difabel_nondifabel == 'DIFABEL' ? 'selected' : '' }}>DIFABEL</option>
+                                                        <option value="NON DIFABEL" {{ $pengaduan->difabel_nondifabel == 'NON DIFABEL' ? 'selected' : '' }}>NON DIFABEL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Status
                                                         Kasus</label>
                                                     <select class="form-select" name="status">
