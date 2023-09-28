@@ -35,7 +35,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware(['auth'])->get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('provinces', 'DependentDropdownController@provinces')->name('provinces');
 Route::get('cities', 'DependentDropdownController@cities')->name('cities');
