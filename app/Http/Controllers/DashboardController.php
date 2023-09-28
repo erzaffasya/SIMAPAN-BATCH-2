@@ -33,7 +33,7 @@ class DashboardController extends Controller
             $arrayName[] = $item->name;
             $arrayJumlah[] = $item->total;
         }
-        $dataKecamatan = array_merge([$arrayName], [$arrayJumlah]);
+        $dataKecamatan = array_merge([$arrayName??0], [$arrayJumlah??0]);
 
         $dataPengaduan = DB::table('pengaduan')
             ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'))
@@ -106,7 +106,7 @@ class DashboardController extends Controller
             }
         }
 
-        $dataKDRT = array_merge([$arrayKDRT], [$arrayNONKDRT]);
+        $dataKDRT = array_merge([$arrayKDRT??0], [$arrayNONKDRT??0]);
 
 
         // dd($arrayStatistikPengaduan);
