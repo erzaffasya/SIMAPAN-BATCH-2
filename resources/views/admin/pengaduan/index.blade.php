@@ -14,10 +14,66 @@
             <div class="card-body">
                 <div class="table-top">
                     <div class="search-set">
+                        <div class="search-path">
+                            <a class="btn btn-filter {{ $year || $status ? ' setclose' : '' }}" id="filter_search">
+                                <img src="/tadmin/assets/img/icons/filter.svg" alt="img">
+                                <span><img src="/tadmin/assets/img/icons/closes.svg" alt="img"></span>
+                            </a>
+                        </div>
                         <div class="search-input">
                             <a class="btn btn-searchset"><img
                                     src="{{ asset('tadmin/assets/img/icons/search-white.svg') }}" alt="img"></a>
                         </div>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="excel"
+                                    href="/admin/pengaduan/export?{{ explode('?', Request::getRequestUri())[1] ?? '' }}"><img
+                                        src="/tadmin/assets/img/icons/excel.svg" alt="img"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {{-- /Filter --}}
+                <div class="card mb-0" id="filter_inputs" {{ $year || $status ? 'style=display:block' : '' }}>
+                    <div class="card-body pb-0">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-lg-2 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <select class="form-control" name="status">
+                                            <option value="">Status</option>
+                                            <option value="Menunggu" {{ $status == 'Menunggu' ? 'selected' : '' }}>
+                                                Menunggu</option>
+                                            <option value="Proses" {{ $status == 'Proses' ? 'selected' : '' }}>
+                                                Proses</option>
+                                            <option value="Selesai" {{ $status == 'Selesai' ? 'selected' : '' }}>
+                                                Selesai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <select class="form-control" name="year">
+                                            <option value="">Tahun</option>
+                                            @for ($i = 2022; $i < \Carbon\Carbon::now()->format('Y') + 1; $i++)
+                                                <option value="{{ $i }}"
+                                                    {{ $year == $i ? 'selected' : '' }}>
+                                                    {{ $i }}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-filters ms-auto"><img
+                                                src="/tadmin/assets/img/icons/search-whites.svg"
+                                                alt="img"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- /Filter -->

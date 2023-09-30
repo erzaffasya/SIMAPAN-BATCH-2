@@ -48,6 +48,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('user', UserController::class);
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
+    Route::get('pengaduan/export', [PengaduanController::class, 'export'])->name("pengaduan.export");
     Route::resource('pengaduan', PengaduanController::class);
     Route::resource('jenis-kekerasan', JenisKekerasanController::class);
     Route::resource('jenis-layanan', JenisLayananController::class);

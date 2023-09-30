@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PengaduanExport;
 use App\Models\JenisKekerasan;
 use App\Models\JenisLayanan;
 use App\Models\Pengaduan;
 use App\Models\User;
 use Carbon\Carbon;
+use Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -14,10 +16,22 @@ use Image;
 
 class PengaduanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $Pengaduan = Pengaduan::all();
-        return view('admin.pengaduan.index', compact('Pengaduan'));
+        $status = $request->query("status");
+        $year = $request->query("year");
+
+        $Pengaduan = Pengaduan::query();
+
+        if ($status) {
+            $Pengaduan = $Pengaduan->where("status", $status);
+        }
+
+        if ($year) {
+            $Pengaduan = $Pengaduan->whereYear("tanggal_registrasi", $year);
+        }
+        $Pengaduan = $Pengaduan->get();
+        return view('admin.pengaduan.index', compact('Pengaduan', "year", "status"));
     }
 
     public function create()
@@ -303,5 +317,13 @@ class PengaduanController extends Controller
         $Pengaduan->delete();
         return redirect()->route('pengaduan.index')
             ->with('success', 'Pengaduan Berhasil Dihapus');
+    }
+
+    public function export(Request $request)
+    {
+        $status = $request->query("status");
+        $year = $request->query("year");
+
+        return Excel::download(new PengaduanExport($status, $year), 'pengaduan.xlsx');
     }
 }
