@@ -1,20 +1,20 @@
 <div class="header">
             
-    <!-- Logo -->
-     <div class="header-left active">
+    
+    <div class="header-left active">
         <a href="index.html" class="logo logo-normal">
-            <img src="{{asset('tadmin/assets/img/logo.png')}}"  alt="">
+            <img src="{{asset('tadmin/assets/img/logo-dp3akb-full.png')}}" style="width: 160px"  alt="">
         </a>
         <a href="index.html" class="logo logo-white">
-            <img src="{{asset('tadmin/assets/img/logo-white.png')}}"  alt="">
+            <img src="{{asset('tadmin/assets/img/logo-dp3akb-full.png')}}" style="width: 160px"  alt="">
+            {{-- <img src="{{asset('tadmin/assets/img/logo-white.png')}}"  alt=""> --}}
         </a>
         <a href="index.html" class="logo-small">
             <img src="{{asset('tadmin/assets/img/logo-small.png')}}"  alt="">
         </a>
-        <a id="toggle_btn" href="javascript:void(0);">
-        </a>
+        {{-- <a id="toggle_btn" href="javascript:void(0);">
+        </a> --}}
     </div>
-    <!-- /Logo -->
     
     <a id="mobile_btn" class="mobile_btn" href="#sidebar">
         <span class="bar-icon">

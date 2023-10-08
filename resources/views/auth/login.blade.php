@@ -9,10 +9,10 @@
         content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
-    <title>Login - Pos admin template</title>
+    <title>Login - DP3AKB BALIKPAPAN</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('tadmin/assets/img/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('tadmin/assets/img/favicon.ico') }}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('tadmin/assets/css/bootstrap.min.css') }}">
@@ -42,9 +42,11 @@
                             <a href="index.html" class="login-logo logo-white">
                                 <img src="{{ asset('tadmin/assets/img/logo-white.png') }}" alt="">
                             </a> --}}
+                            
                             <div class="login-userheading">
-                                <h3>Sign In</h3>
-                                <h4>Please login to your account</h4>
+                                <img src="{{asset('tadmin/assets/img/logo-dp3akb-full.png')}}" style="width: 200px"  alt="">
+                                <h3>Selamat Datang di DP3AKB</h3>
+                                <h4>Masukkan akun anda dengan benar !</h4>
                             </div>
                             <div class="form-login">
                                 <label>Email</label>
@@ -68,7 +70,7 @@
                     </div>
                 </div>
                 <div class="login-img">
-                    <img src="{{ asset('tadmin/assets/img/login.jpg') }}" alt="img">
+                    <img src="{{ asset('tadmin/assets/img/login.jpeg') }}" alt="img" style="object-fit: cover">
                 </div>
             </div>
         </div>
