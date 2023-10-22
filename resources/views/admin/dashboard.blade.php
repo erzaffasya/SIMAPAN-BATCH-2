@@ -4,8 +4,8 @@
             <div class="col-lg-3 col-sm-6 col-12 d-flex">
                 <div class="dash-count">
                     <div class="dash-counts">
-                        <h4>{{ $akun->count() }}</h4>
-                        <h5>Akun</h5>
+                        <h4>{{ $pengaduan }}</h4>
+                        <h5>Jumlah Pengaduan</h5>
                     </div>
                     <div class="dash-imgs">
                         <i data-feather="user"></i>
@@ -15,8 +15,8 @@
             <div class="col-lg-3 col-sm-6 col-12 d-flex">
                 <div class="dash-count das1">
                     <div class="dash-counts">
-                        <h4>{{ $jenisLayanan->count() }}</h4>
-                        <h5>Jenis Layanan</h5>
+                        <h4>{{ $pengaduan }}</h4>
+                        <h5>Jumlah Korban</h5>
                     </div>
                     <div class="dash-imgs">
                         <i data-feather="file-text"></i>
@@ -26,8 +26,8 @@
             <div class="col-lg-3 col-sm-6 col-12 d-flex">
                 <div class="dash-count das2">
                     <div class="dash-counts">
-                        <h4>{{ $jenisKekerasan->count() }}</h4>
-                        <h5>Jenis kekerasan</h5>
+                        <h4>{{ $pengaduan }}</h4>
+                        <h5>Jumlah Keselurahan Kasus</h5>
                     </div>
                     <div class="dash-imgs">
                         <i data-feather="file-text"></i>
@@ -37,8 +37,8 @@
             <div class="col-lg-3 col-sm-6 col-12 d-flex">
                 <div class="dash-count das3">
                     <div class="dash-counts">
-                        <h4>{{ $pengaduan }}</h4>
-                        <h5>Pengaduan</h5>
+                        <h4>{{ $pengaduanSelesai }}</h4>
+                        <h5>Jumlah Penyelesaian Kasus</h5>
                     </div>
                     <div class="dash-imgs">
                         <i data-feather="file"></i>
@@ -121,7 +121,44 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-sm-12 col-12 d-flex">
+            <div class="col-lg-6 col-sm-6 col-6 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Grafik Pengaduan</h5>
+                        <div class="graph-sets mb-2">
+                            <ul>
+                                <li>
+                                    <span>Pengaduan</span>
+                                </li>
+                            </ul>
+                            <div class="dropdown mb-2">
+                                {{-- <button class="btn btn-white btn-sm dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    2022 <img src="{{ asset('tadmin/assets/img/icons/dropdown.svg') }}" alt="img"
+                                        class="ms-2">
+                                </button> --}}
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2022</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2021</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2020</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div id="s-line" class="chart-set"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-6 col-6 d-flex">
                 <div class="card flex-fill">
                     <div class="card-header pb-0 d-flex justify-content-between align-items-center">
                         <h5 class="card-title mb-0">Grafik Pengaduan</h5>

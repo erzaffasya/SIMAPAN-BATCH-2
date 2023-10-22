@@ -15,6 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         $pengaduan = Pengaduan::count();
+        $pengaduanSelesai = Pengaduan::where('status','Selesai')->count();
         $recentPengaduan = Pengaduan::orderBy('updated_at', 'DESC')->get();
         $akun = User::all();
         $jenisLayanan = JenisLayanan::all();
@@ -110,6 +111,6 @@ class DashboardController extends Controller
 
 
         // dd($arrayStatistikPengaduan);
-        return view('admin.dashboard', compact('pengaduan', 'dataKDRT', 'dataKecamatan', 'akun', 'jenisLayanan', 'jenisKekerasan', 'arrayStatistikPengaduan', 'recentPengaduan'));
+        return view('admin.dashboard', compact('pengaduan', 'dataKDRT', 'pengaduanSelesai', 'dataKecamatan', 'akun', 'jenisLayanan', 'jenisKekerasan', 'arrayStatistikPengaduan', 'recentPengaduan'));
     }
 }
