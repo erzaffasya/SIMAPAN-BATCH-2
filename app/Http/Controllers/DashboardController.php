@@ -41,6 +41,19 @@ class DashboardController extends Controller
 
         // end
 
+        $statistikKelurahan = DB::table('pengaduan')
+            ->selectRaw('count(*) as total, name ')
+            ->join('indonesia_villages', 'indonesia_villages.id', '=', 'pengaduan.kelurahan_korban')
+            ->groupBy('indonesia_villages.name')
+            ->orderBy('indonesia_villages.name')
+            ->get();
+        $dataKelurahan = [];
+        foreach ($statistikKelurahan as $item) {
+            $arrayNameKelurahan[] = $item->name;
+            $arrayJumlahKelurahan[] = $item->total;
+        }
+        $dataKelurahan = array_merge([$arrayNameKelurahan ?? []], [$arrayJumlahKelurahan ?? []]);
+
         $statistikKecamatan = DB::table('pengaduan')
             ->selectRaw('count(*) as total, name ')
             ->join('indonesia_districts', 'indonesia_districts.id', '=', 'pengaduan.kecamatan_korban')
@@ -130,6 +143,6 @@ class DashboardController extends Controller
 
 
         // dd($arrayStatistikPengaduan);
-        return view('admin.dashboard', compact('pengaduan', 'dataKDRT', 'pengaduanSelesai', 'dataKecamatan', 'akun', 'jenisLayanan', 'jenisKekerasan', 'arrayStatistikPengaduan', 'recentPengaduan', 'pengaduan_total_korban'));
+        return view('admin.dashboard', compact('pengaduan', 'dataKelurahan', 'dataKDRT', 'pengaduanSelesai', 'dataKecamatan', 'akun', 'jenisLayanan', 'jenisKekerasan', 'arrayStatistikPengaduan', 'recentPengaduan', 'pengaduan_total_korban'));
     }
 }
