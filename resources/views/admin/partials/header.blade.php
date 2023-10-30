@@ -3,14 +3,14 @@
     
     <div class="header-left active">
         <a href="index.html" class="logo logo-normal">
-            <img src="{{asset('tadmin/assets/img/logo-dp3akb-full.png')}}" style="width: 160px"  alt="">
+            <img src="{{asset('tadmin/assets/img/logo-pemkot.png')}}" style="width: 30px"  alt="">
         </a>
         <a href="index.html" class="logo logo-white">
-            <img src="{{asset('tadmin/assets/img/logo-dp3akb-full.png')}}" style="width: 160px"  alt="">
+            <img src="{{asset('tadmin/assets/img/logo-pemkot.png')}}" style="width: 30px"  alt="">
             {{-- <img src="{{asset('tadmin/assets/img/logo-white.png')}}"  alt=""> --}}
         </a>
         <a href="index.html" class="logo-small">
-            <img src="{{asset('tadmin/assets/img/logo-small.png')}}"  alt="">
+            <img src="{{asset('tadmin/assets/img/logo-pemkot.png')}}"  alt="">
         </a>
         {{-- <a id="toggle_btn" href="javascript:void(0);">
         </a> --}}

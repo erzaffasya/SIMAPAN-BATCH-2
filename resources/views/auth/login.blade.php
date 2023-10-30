@@ -44,7 +44,7 @@
                             </a> --}}
                             
                             <div class="login-userheading">
-                                <img src="{{asset('tadmin/assets/img/logo-dp3akb-full.png')}}" style="width: 200px"  alt="">
+                                <img src="{{asset('tadmin/assets/img/logo-pemkot.png')}}" style="width: 70px"  alt="">
                                 <h3>Selamat Datang di DP3AKB</h3>
                                 <h4>Masukkan akun anda dengan benar !</h4>
                             </div>
