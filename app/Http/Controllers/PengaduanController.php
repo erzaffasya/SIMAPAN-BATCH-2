@@ -47,11 +47,6 @@ class PengaduanController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $request->validate([
-        //     // 'ft' => 'required'
-        // ]);
-
         function convertToRoman($num)
         {
             $romans = array(
@@ -75,18 +70,21 @@ class PengaduanController extends Controller
                 return "";
             }
         }
+
         $carbonTanggal = Carbon::createFromFormat("Y-m-d", $request->tanggal_registrasi);
         $bulan = $carbonTanggal->format('n');
         $tahun = $carbonTanggal->format('Y');
         $roman_bulan = convertToRoman($bulan);
-        //create nomor
+
+        // Create nomor
         $max = Pengaduan::selectRaw("MAX(CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(nomor, '/', 1), '/', -1) AS UNSIGNED)) AS max_urut")->pluck("max_urut")->first();
         if ($max) {
             $new_urut = str_pad($max + 1, 3, '0', STR_PAD_LEFT);
-            $nomor = "$new_urut/PG/$roman_bulan/$tahun";
+            $nomor = "REG. " . $new_urut . "/UPTD PPA/" . $roman_bulan . "/" . $tahun;
         } else {
-            $nomor = "001/PG/$roman_bulan/$tahun";
+            $nomor = "REG.001/UPTD PPA/" . $roman_bulan . "/" . $tahun;
         }
+
 
         if (isset($request->akta)) {
             $extention = $request->akta->extension();
