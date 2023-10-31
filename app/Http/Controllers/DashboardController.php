@@ -22,6 +22,20 @@ class DashboardController extends Controller
         $jenisKekerasan = JenisKekerasan::all();
         $currentYear = Carbon::now()->year;
 
+        $dataJenisKekerasan = DB::table('jenis_kekerasan_pengaduan')
+        ->select('jenis_kekerasan', DB::raw('COUNT(*) as total'))
+        ->join('jenis_kekerasan', 'jenis_kekerasan.id', '=', 'jenis_kekerasan_pengaduan.jenis_kekerasan_id')
+        ->whereYear('jenis_kekerasan_pengaduan.created_at', $currentYear)
+        ->groupBy('jenis_kekerasan_id','jenis_kekerasan')
+        ->get();
+
+        $dataJenisLayanan = DB::table('jenis_layanan_pengaduan')
+        ->select('jenis_layanan', DB::raw('COUNT(*) as total'))
+        ->join('jenis_layanan', 'jenis_layanan.id', '=', 'jenis_layanan_pengaduan.jenis_layanan_id')
+        ->whereYear('jenis_layanan_pengaduan.created_at', $currentYear)
+        ->groupBy('jenis_layanan_id','jenis_layanan')
+        ->get();
+        // dd($dataJenisLayanan);
 
         // start alwi
         $pengaduan_total_korban = Pengaduan::select(
@@ -143,6 +157,6 @@ class DashboardController extends Controller
 
 
         // dd($arrayStatistikPengaduan);
-        return view('admin.dashboard', compact('pengaduan', 'dataKelurahan', 'dataKDRT', 'pengaduanSelesai', 'dataKecamatan', 'akun', 'jenisLayanan', 'jenisKekerasan', 'arrayStatistikPengaduan', 'recentPengaduan', 'pengaduan_total_korban'));
+        return view('admin.dashboard', compact('pengaduan', 'dataJenisLayanan', 'dataJenisKekerasan', 'dataKelurahan', 'dataKDRT', 'pengaduanSelesai', 'dataKecamatan', 'akun', 'jenisLayanan', 'jenisKekerasan', 'arrayStatistikPengaduan', 'recentPengaduan', 'pengaduan_total_korban'));
     }
 }

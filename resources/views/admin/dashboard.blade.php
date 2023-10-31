@@ -127,10 +127,72 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-6 d-flex">
+            <div class="col-lg-3 col-sm-3 col-3 d-flex">
                 <div class="card flex-fill">
                     <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">Grafik Pengaduan Perkecamatan</h5>
+                        <h5 class="card-title mb-0">Grafik Jenis Kekerasan</h5>
+                        <div class="graph-sets mb-2">
+                            <div class="dropdown mb-2">
+                                {{-- <button class="btn btn-white btn-sm dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    2022 <img src="{{ asset('tadmin/assets/img/icons/dropdown.svg') }}" alt="img"
+                                        class="ms-2">
+                                </button> --}}
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2022</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2021</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2020</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div id="s-jenis-kekerasan" class="chart-set"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-3 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Grafik Jenis Layanan</h5>
+                        <div class="graph-sets mb-2">
+                            <div class="dropdown mb-2">
+                                {{-- <button class="btn btn-white btn-sm dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    2022 <img src="{{ asset('tadmin/assets/img/icons/dropdown.svg') }}" alt="img"
+                                        class="ms-2">
+                                </button> --}}
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2022</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2021</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class="dropdown-item">2020</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div id="s-jenis-layanan" class="chart-set"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-3 d-flex">
+                <div class="card flex-fill">
+                    <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Grafik Perkecamatan</h5>
                         <div class="graph-sets mb-2">
                             <div class="dropdown mb-2">
                                 {{-- <button class="btn btn-white btn-sm dropdown-toggle" type="button"
@@ -158,10 +220,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-6 col-6 d-flex">
+            <div class="col-lg-3 col-sm-3 col-3 d-flex">
                 <div class="card flex-fill">
                     <div class="card-header pb-0 d-flex justify-content-between align-items-center">
-                        <h5 class="card-title mb-0">Grafik Per Kelurahan</h5>
+                        <h5 class="card-title mb-0">Grafik Perkelurahan</h5>
                         <div class="graph-sets mb-2">
                             {{-- <ul>
                                     <li>
@@ -309,6 +371,62 @@
                     };
                     var chart = new ApexCharts(
                         document.querySelector("#s-line2"),
+                        options
+                    );
+                    chart.render();
+                }
+
+                if ($('#s-jenis-kekerasan').length > 0) {
+
+                    var dataJenisKekerasan = @json($dataJenisKekerasan);
+                    var labels = dataJenisKekerasan.map(item => item.jenis_kekerasan);
+                    var values = dataJenisKekerasan.map(item => item.total);
+                    console.log(dataJenisKekerasan, 'dataJenisKekerasan', dataJenisKekerasan.total, dataJenisKekerasan
+                        .jenis_kekerasan);
+                    var options = {
+                        series: values,
+                        labels: labels,
+                        chart: {
+                            height: 350,
+                            type: 'donut',
+                            zoom: {
+                                enabled: false
+                            },
+                            toolbar: {
+                                show: false,
+                            }
+                        }
+                    };
+                    var chart = new ApexCharts(
+                        document.querySelector("#s-jenis-kekerasan"),
+                        options
+                    );
+                    chart.render();
+                }
+
+                if ($('#s-jenis-layanan').length > 0) {
+
+                    var dataJenisLayanan = @json($dataJenisLayanan);
+                    var labels = dataJenisLayanan.map(item => item.jenis_layanan);
+                    var values = dataJenisLayanan.map(item => item.total);
+                    console.log(dataJenisLayanan, 'dataJenisLayanan', dataJenisLayanan.total, dataJenisLayanan
+                        .jenis_layanan);
+                    var options = {
+                        series: values,
+                        labels: labels,
+                        chart: {
+                            height: 350,
+                            type: 'donut',
+                            zoom: {
+                                enabled: false
+                            },
+                            toolbar: {
+                                show: false,
+                            }
+                        }
+                    };
+                    var chart = new ApexCharts(
+                        document.querySelector("#s-jenis-layanan"),
                         options
                     );
                     chart.render();
