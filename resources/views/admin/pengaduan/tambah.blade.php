@@ -663,7 +663,30 @@
             $('#kecamatan').on('change', function() {
                 onChangeSelect('{{ route('villages') }}', $(this).val(), 'desa');
             })
+            $('#lahir_korban').on('change', function() {
+                const birthdate = document.getElementById('lahir_korban').value;
+                const today = new Date();
+                const birthDate = new Date(birthdate);
+                const age = today.getFullYear() - birthDate.getFullYear();
+                // Adjust age if birthday hasn't occurred yet this year
+                if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
+                    age--;
+                }
+                document.getElementById('usia_korban').value = age;
+            })
+            $('#lahir_pelaku').on('change', function() {
+                const birthdate = document.getElementById('lahir_pelaku').value;
+                const today = new Date();
+                const birthDate = new Date(birthdate);
+                const age = today.getFullYear() - birthDate.getFullYear();
+                // Adjust age if birthday hasn't occurred yet this year
+                if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
+                    age--;
+                }
+                document.getElementById('usia_pelaku').value = age;
+            })
         });
+        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script>
