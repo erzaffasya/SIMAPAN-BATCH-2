@@ -267,7 +267,7 @@
                         <tr>
                             <td>Tanda Tangan</td>
                             <td>:</td>
-                            <td><img style="width: 200px" src="" alt="" width="100" height="100">
+                            <td><img style="width: 200px" src="{{ asset($pengaduan->ttd) }}" alt="" width="100" height="100">
                             </td>
                         </tr>
                     </table>
