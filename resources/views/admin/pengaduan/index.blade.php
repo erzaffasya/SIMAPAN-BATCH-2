@@ -93,7 +93,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nomor }}</td>
-                                    <td>{{ $item->tanggal_registrasi }}</td>
+                                    <td>{{ $item->tanggal_registrasi->format('D, d M Y') }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
                                         <div class="d-flex">
