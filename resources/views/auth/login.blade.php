@@ -12,7 +12,7 @@
     <title>Login - DP3AKB BALIKPAPAN</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('tadmin/assets/img/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('tadmin/assets/img/icon.ico') }}">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('tadmin/assets/css/bootstrap.min.css') }}">
