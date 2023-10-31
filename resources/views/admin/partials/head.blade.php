@@ -5,7 +5,7 @@
     content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern,  html5, responsive">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>DASHBOARD | SIMAPAN</title>
+<title>DASHBOARD | PENGADUAN</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('tadmin/assets/img/icon.ico') }}">
