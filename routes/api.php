@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\EmergencyController;
+use App\Http\Controllers\API\StatistikController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 
@@ -25,6 +27,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('emergency', [EmergencyControlleR::class, 'store']);
     Route::get('emergency', [EmergencyControlleR::class, 'getEmergency']);
-    
+
     Route::post('/logout', [App\Http\Controllers\API\AuthController::class, 'logout']);
 });
+
+
+Route::get('grafik-kdrt', [StatistikController::class, 'grafikKDRT']);
+Route::get('grafik-total-kasus', [StatistikController::class, 'totalKasus']);
+Route::get('grafik-jenis-kekerasan', [StatistikController::class, 'grafikJenisKekerasan']);
+Route::get('grafik-jenis-layanan', [StatistikController::class, 'grafikJenisLayanan']);
+Route::get('grafik-perkecamatan', [StatistikController::class, 'grafikPerkecamatan']);
+Route::get('grafik-perkelurahan', [StatistikController::class, 'grafikPerkelurahan']);
+Route::get('grafik-pengaduan', [StatistikController::class, 'grafikPengaduan']);
