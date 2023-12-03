@@ -169,7 +169,6 @@ class StatistikController extends Controller
         foreach ($dataPengaduan as $item) {
             $arrayPengaduan[$item->month] = (int)$item->total;
         }
-        $arrayStatistikPengaduan = implode(', ', $arrayPengaduan);
-        return response()->json($arrayStatistikPengaduan, 201);
+        return response()->json($arrayPengaduan, 201);
     }
 }
