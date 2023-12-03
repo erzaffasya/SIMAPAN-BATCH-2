@@ -55,9 +55,9 @@ class StatistikController extends Controller
 
         foreach ($dataPengaduan as $item) {
             if ($item->kdrt_nonkdrt === 'KDRT') {
-                $arrayKDRT[$item->month] = $item->total;
+                $arrayKDRT[$item->month] = (int)$item->total;
             } else {
-                $arrayNONKDRT[$item->month] = $item->total;
+                $arrayNONKDRT[$item->month] = (int)$item->total;
             }
         }
 
@@ -120,7 +120,7 @@ class StatistikController extends Controller
 
         foreach ($statistikKecamatan as $item) {
             $arrayName[] = $item->name;
-            $arrayJumlah[] = $item->total;
+            $arrayJumlah[] = (int)$item->total;
         }
         $dataKecamatan = array_merge([$arrayName ?? []], [$arrayJumlah ?? []]);
         return response()->json($dataKecamatan, 201);
@@ -137,7 +137,7 @@ class StatistikController extends Controller
         $dataKelurahan = [];
         foreach ($statistikKelurahan as $item) {
             $arrayNameKelurahan[] = $item->name;
-            $arrayJumlahKelurahan[] = $item->total;
+            $arrayJumlahKelurahan[] = (int)$item->total;
         }
         $dataKelurahan = array_merge([$arrayNameKelurahan ?? []], [$arrayJumlahKelurahan ?? []]);
         return response()->json($dataKelurahan, 201);
@@ -167,7 +167,7 @@ class StatistikController extends Controller
             12 => 0,
         ];
         foreach ($dataPengaduan as $item) {
-            $arrayPengaduan[$item->month] = $item->total;
+            $arrayPengaduan[$item->month] = (int)$item->total;
         }
         $arrayStatistikPengaduan = implode(', ', $arrayPengaduan);
         return response()->json($arrayStatistikPengaduan, 201);
