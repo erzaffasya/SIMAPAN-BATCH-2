@@ -77,7 +77,7 @@ class PengaduanController extends Controller
         $roman_bulan = convertToRoman($bulan);
 
         // Create nomor
-        $max = Pengaduan::selectRaw("MAX(CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(nomor, '/', 1), '/', -1) AS UNSIGNED)) AS max_urut")->pluck("max_urut")->first();
+        $max = Pengaduan::selectRaw("MAX(CAST(SUBSTRING_INDEX(SUBSTRING_INDEX(nomor, '/', 1), '.', -1) AS UNSIGNED)) AS max_urut")->pluck("max_urut")->first();
         if ($max) {
             $new_urut = str_pad($max + 1, 3, '0', STR_PAD_LEFT);
             $nomor = "REG. " . $new_urut . "/UPTD PPA/" . $roman_bulan . "/" . $tahun;

@@ -381,8 +381,6 @@
                     var dataJenisKekerasan = @json($dataJenisKekerasan);
                     var labels = dataJenisKekerasan.map(item => item.jenis_kekerasan);
                     var values = dataJenisKekerasan.map(item => item.total);
-                    console.log(dataJenisKekerasan, 'dataJenisKekerasan', dataJenisKekerasan.total, dataJenisKekerasan
-                        .jenis_kekerasan);
                     var options = {
                         series: values,
                         labels: labels,

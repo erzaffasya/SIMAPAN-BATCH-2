@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="login-img">
-                    <img src="{{ asset('tadmin/assets/img/login.jpeg') }}" alt="img" style="object-fit: cover">
+                    <img src="{{ asset('tadmin/assets/img/background.jpeg') }}" alt="img" style="">
                 </div>
             </div>
         </div>
