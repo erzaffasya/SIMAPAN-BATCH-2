@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Exports\PengaduanExport;
 use App\Models\JenisKekerasan;
+use App\Models\JenisKekerasanPengaduan;
 use App\Models\JenisLayanan;
+use App\Models\JenisLayananPengaduan;
 use App\Models\Pengaduan;
 use App\Models\User;
 use Carbon\Carbon;
@@ -85,20 +87,31 @@ class PengaduanController extends Controller
             $nomor = "REG.001/UPTD PPA/" . $roman_bulan . "/" . $tahun;
         }
 
-
         if (isset($request->akta)) {
-            $extention = $request->akta->extension();
-            $fileakta = time() . '.' . $extention;
+            $extension = $request->akta->extension();
+            $fileakta = time() . '.' . $extension;
+            $path = storage_path('app/public/akta/');
             $dataakta = "storage/akta/" . $fileakta;
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+
             $request->akta->storeAs('public/akta', $fileakta);
         } else {
             $dataakta = null;
         }
 
+
         if (isset($request->ktp)) {
             $extention = $request->ktp->extension();
             $filektp = time() . '.' . $extention;
+            $path = storage_path('app/public/ktp/');
             $dataktp = "storage/ktp/" . $filektp;
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
             $request->ktp->storeAs('public/ktp', $filektp);
         } else {
             $dataktp = null;
@@ -108,7 +121,12 @@ class PengaduanController extends Controller
         if (isset($request->kk)) {
             $extention = $request->kk->extension();
             $filekk = time() . '.' . $extention;
+            $path = storage_path('app/public/kk/');
             $datakk = "storage/kk/" . $filekk;
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
             $request->kk->storeAs('public/kk', $filekk);
         } else {
             $datakk = null;
@@ -117,13 +135,16 @@ class PengaduanController extends Controller
         if (isset($request->foto_korban)) {
             $extention = $request->foto_korban->extension();
             $filefotokorban = time() . '.' . $extention;
+            $path = storage_path('app/public/fotokorban/');
             $datafotokorban = "storage/fotokorban/" . $filefotokorban;
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
             $request->foto_korban->storeAs('public/fotokorban', $filefotokorban);
         } else {
             $datafotokorban = null;
         }
-
-        // dd($request->signature);
 
         $data_uri = $request->signature;
         $encoded_image = explode(",", $data_uri)[1];
@@ -310,6 +331,8 @@ class PengaduanController extends Controller
 
     public function destroy($id)
     {
+        JenisLayananPengaduan::where('pengaduan_id', $id)->delete();
+        JenisKekerasanPengaduan::where('pengaduan_id', $id)->delete();
         $Pengaduan = Pengaduan::findOrFail($id);
         Storage::delete("public/Pengaduan/$Pengaduan->foto");
         $Pengaduan->delete();
