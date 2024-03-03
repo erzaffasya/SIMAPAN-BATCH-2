@@ -296,7 +296,7 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Korban</label>
                                                     <input type="date" name="lahir_korban" class="form-control"
-                                                        id="lahir_korban" value="{{ $pengaduan->lahir_korban }}">
+                                                        id="lahir_korban" value="{{ $pengaduan->lahir_korban->format('Y-m-d') }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -529,7 +529,7 @@
                                                         class="form-label">Hubungan Pelaku Dengan Korban</label>
                                                     <input type="text" name="hubungan_pelaku" class="form-control"
                                                         id="basicpill-servicetax-input"
-                                                        value="{{ $pengaduan->hubungan_korban }}">
+                                                        value="{{ $pengaduan->hubungan_pelaku }}">
                                                 </div>
                                             </div>
                                         </div>

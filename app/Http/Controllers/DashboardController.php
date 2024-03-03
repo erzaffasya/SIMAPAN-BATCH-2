@@ -44,7 +44,7 @@ class DashboardController extends Controller
             DB::raw('SUM(CASE WHEN usia_korban >= 18 AND jenis_kelamin_korban = "laki-laki" THEN 1 ELSE 0 END) AS total_diatas_18')
         )
             ->unionAll(
-                Pengaduan::select(
+                DB::table('pengaduan')->select(
                     DB::raw("'P' AS jenis_kelamin"),
                     DB::raw('SUM(CASE WHEN usia_korban < 18 AND jenis_kelamin_korban = "Perempuan" THEN 1 ELSE 0 END) AS total_dibawah_18'),
                     DB::raw('SUM(CASE WHEN usia_korban >= 18 AND jenis_kelamin_korban = "Perempuan" THEN 1 ELSE 0 END) AS total_diatas_18')
@@ -83,9 +83,9 @@ class DashboardController extends Controller
         $dataKecamatan = array_merge([$arrayName ?? []], [$arrayJumlah ?? []]);
 
         $dataPengaduan = DB::table('pengaduan')
-            ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'))
-            ->whereYear('created_at', $currentYear)
-            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->select(DB::raw('MONTH(tanggal_registrasi) as month'), DB::raw('COUNT(*) as total'))
+            ->whereYear('tanggal_registrasi', $currentYear)
+            ->groupBy(DB::raw('MONTH(tanggal_registrasi)'))
             ->get();
 
         $arrayPengaduan = [
@@ -109,9 +109,9 @@ class DashboardController extends Controller
 
 
         $dataPengaduan = DB::table('pengaduan')
-            ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'), 'kdrt_nonkdrt')
-            ->whereYear('created_at', $currentYear)
-            ->groupBy(DB::raw('MONTH(created_at)'), 'kdrt_nonkdrt')
+            ->select(DB::raw('MONTH(tanggal_registrasi) as month'), DB::raw('COUNT(*) as total'), 'kdrt_nonkdrt')
+            ->whereYear('tanggal_registrasi', $currentYear)
+            ->groupBy(DB::raw('MONTH(tanggal_registrasi)'), 'kdrt_nonkdrt')
             ->get();
 
         $arrayKDRT = [
