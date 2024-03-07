@@ -25,14 +25,16 @@ class DashboardController extends Controller
         $dataJenisKekerasan = DB::table('jenis_kekerasan_pengaduan')
         ->select('jenis_kekerasan', DB::raw('COUNT(*) as total'))
         ->join('jenis_kekerasan', 'jenis_kekerasan.id', '=', 'jenis_kekerasan_pengaduan.jenis_kekerasan_id')
-        ->whereYear('jenis_kekerasan_pengaduan.created_at', $currentYear)
+        ->join('jenis_kekerasan_pengaduan.pengaduan_id', 'pengaduan.id')
+        ->whereYear('pengaduan.tanggal_registrasi', $currentYear)
         ->groupBy('jenis_kekerasan_id','jenis_kekerasan')
         ->get();
 
         $dataJenisLayanan = DB::table('jenis_layanan_pengaduan')
         ->select('jenis_layanan', DB::raw('COUNT(*) as total'))
         ->join('jenis_layanan', 'jenis_layanan.id', '=', 'jenis_layanan_pengaduan.jenis_layanan_id')
-        ->whereYear('jenis_layanan_pengaduan.created_at', $currentYear)
+        ->join('jenis_layanan_pengaduan.pengaduan_id', 'pengaduan.id')
+        ->whereYear('pengaduan.tanggal_registrasi', $currentYear)
         ->groupBy('jenis_layanan_id','jenis_layanan')
         ->get();
         // dd($dataJenisLayanan);

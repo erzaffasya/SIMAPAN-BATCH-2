@@ -17,9 +17,9 @@ class StatistikController extends Controller
     {
         $currentYear = Carbon::now()->year;
         $dataPengaduan = DB::table('pengaduan')
-            ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'), 'kdrt_nonkdrt')
-            ->whereYear('created_at', $currentYear)
-            ->groupBy(DB::raw('MONTH(created_at)'), 'kdrt_nonkdrt')
+            ->select(DB::raw('MONTH(tanggal_registrasi) as month'), DB::raw('COUNT(*) as total'), 'kdrt_nonkdrt')
+            ->whereYear('tanggal_registrasi', $currentYear)
+            ->groupBy(DB::raw('MONTH(tanggal_registrasi)'), 'kdrt_nonkdrt')
             ->get();
 
         $arrayKDRT = [
@@ -90,7 +90,8 @@ class StatistikController extends Controller
         $dataJenisKekerasan = DB::table('jenis_kekerasan_pengaduan')
             ->select('jenis_kekerasan', DB::raw('COUNT(*) as total'))
             ->join('jenis_kekerasan', 'jenis_kekerasan.id', '=', 'jenis_kekerasan_pengaduan.jenis_kekerasan_id')
-            ->whereYear('jenis_kekerasan_pengaduan.created_at', $currentYear)
+            ->join('jenis_kekerasan_pengaduan.pengaduan_id', 'pengaduan.id')
+            ->whereYear('pengaduan.tanggal_registrasi', $currentYear)
             ->groupBy('jenis_kekerasan_id', 'jenis_kekerasan')
             ->get();
         return response()->json($dataJenisKekerasan, 201);
@@ -102,7 +103,8 @@ class StatistikController extends Controller
         $dataJenisLayanan = DB::table('jenis_layanan_pengaduan')
             ->select('jenis_layanan', DB::raw('COUNT(*) as total'))
             ->join('jenis_layanan', 'jenis_layanan.id', '=', 'jenis_layanan_pengaduan.jenis_layanan_id')
-            ->whereYear('jenis_layanan_pengaduan.created_at', $currentYear)
+            ->join('jenis_layanan_pengaduan.pengaduan_id', 'pengaduan.id')
+            ->whereYear('pengaduan.tanggal_registrasi', $currentYear)
             ->groupBy('jenis_layanan_id', 'jenis_layanan')
             ->get();
         return response()->json($dataJenisLayanan, 201);
@@ -147,9 +149,9 @@ class StatistikController extends Controller
     {
         $currentYear = Carbon::now()->year;
         $dataPengaduan = DB::table('pengaduan')
-            ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(*) as total'))
-            ->whereYear('created_at', $currentYear)
-            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->select(DB::raw('MONTH(tanggal_registrasi) as month'), DB::raw('COUNT(*) as total'))
+            ->whereYear('tanggal_registrasi', $currentYear)
+            ->groupBy(DB::raw('MONTH(tanggal_registrasi)'))
             ->get();
 
         $arrayPengaduan = [
