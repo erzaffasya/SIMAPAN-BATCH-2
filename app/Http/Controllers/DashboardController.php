@@ -23,19 +23,19 @@ class DashboardController extends Controller
         $currentYear = Carbon::now()->year;
 
         $dataJenisKekerasan = DB::table('jenis_kekerasan_pengaduan')
-        ->select('jenis_kekerasan', DB::raw('COUNT(*) as total'))
         ->join('jenis_kekerasan', 'jenis_kekerasan.id', '=', 'jenis_kekerasan_pengaduan.jenis_kekerasan_id')
-        ->join('jenis_kekerasan_pengaduan.pengaduan_id', 'pengaduan.id')
+        ->join('pengaduan', 'jenis_kekerasan_pengaduan.pengaduan_id', '=', 'pengaduan.id')
+        ->select('jenis_kekerasan.jenis_kekerasan', DB::raw('COUNT(*) as total'))
         ->whereYear('pengaduan.tanggal_registrasi', $currentYear)
-        ->groupBy('jenis_kekerasan_id','jenis_kekerasan')
+        ->groupBy('jenis_kekerasan.jenis_kekerasan')
         ->get();
 
         $dataJenisLayanan = DB::table('jenis_layanan_pengaduan')
-        ->select('jenis_layanan', DB::raw('COUNT(*) as total'))
         ->join('jenis_layanan', 'jenis_layanan.id', '=', 'jenis_layanan_pengaduan.jenis_layanan_id')
-        ->join('jenis_layanan_pengaduan.pengaduan_id', 'pengaduan.id')
+        ->join('pengaduan', 'jenis_layanan_pengaduan.pengaduan_id', '=', 'pengaduan.id')
+        ->select('jenis_layanan.jenis_layanan', DB::raw('COUNT(*) as total'))
         ->whereYear('pengaduan.tanggal_registrasi', $currentYear)
-        ->groupBy('jenis_layanan_id','jenis_layanan')
+        ->groupBy('jenis_layanan.jenis_layanan')
         ->get();
         // dd($dataJenisLayanan);
 
