@@ -617,11 +617,12 @@
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Keterangan</label>
                                                     <textarea name="keterangan" class="form-control">{{ $pengaduan->keterangan }}</textarea>
-                                                </div>  
+                                                </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3" id="signature-pad">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda Tangan</label>
+                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda
+                                                        Tangan</label>
                                                     <div class="m-signature-pad">
                                                         <div class="m-signature-pad--body">
                                                             <canvas name="ttd"
@@ -636,38 +637,90 @@
 
                                                         <input type="hidden" name="signature" id="signatureData">
                                                     </div>
+                                                    <img src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}" alt="ttd" width="100%">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input"
-                                                        class="form-label">KTP</label>
-                                                    <input type="file" name="ktp" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="ktp-input" class="form-label">KTP</label>
+                                                    <input type="file" name="ktp" class="form-control" id="ktp-input" accept="image/*" onchange="previewImage(event, 'ktp-preview')">
+                                                    @if ($pengaduan->ktp != null)
+                                                    @php
+                                                    $ext = pathinfo($pengaduan->ktp, PATHINFO_EXTENSION);
+                                                    @endphp
+                                                    @switch($ext)
+                                                    @case('pdf')
+                                                    <embed src="{{ asset($pengaduan->ktp) }}#toolbar=0" type="application/pdf"
+                                                        width="100%" height="600px" />
+                                                    @break
+
+                                                    @default
+                                                    <img src="{{ asset($pengaduan->ktp) }}" alt="ktp" width="100%">
+                                                    @endswitch
+                                                    @endif
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input"
-                                                        class="form-label">Akta</label>
-                                                    <input type="file" name="akta" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="akta-input" class="form-label">Akta</label>
+                                                    <input type="file" name="akta" class="form-control" id="akta-input" accept="image/*" onchange="previewImage(event, 'akta-preview')">
+                                                    @if ($pengaduan->akta != null)
+                                                    @php
+                                                    $ext = pathinfo($pengaduan->akta, PATHINFO_EXTENSION);
+                                                    @endphp
+                                                    @switch($ext)
+                                                    @case('pdf')
+                                                    <embed src="{{ asset($pengaduan->akta) }}#toolbar=0" type="application/pdf"
+                                                        width="100%" height="600px" />
+                                                    @break
+
+                                                    @default
+                                                    <img src="{{ asset($pengaduan->akta) }}" alt="akta" width="100%">
+                                                    @endswitch
+                                                    @endif
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input"
-                                                        class="form-label">KK</label>
-                                                    <input type="file" name="kk" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="kk-input" class="form-label">KK</label>
+                                                    <input type="file" name="kk" class="form-control" id="kk-input" accept="image/*" onchange="previewImage(event, 'kk-preview')">
+                                                    @if ($pengaduan->kk != null)
+                                                    @php
+                                                    $ext = pathinfo($pengaduan->kk, PATHINFO_EXTENSION);
+                                                    @endphp
+                                                    @switch($ext)
+                                                    @case('pdf')
+                                                    <embed src="{{ asset($pengaduan->kk) }}#toolbar=0" type="application/pdf"
+                                                        width="100%" height="600px" />
+                                                    @break
+
+                                                    @default
+                                                    <img src="{{ asset($pengaduan->kk) }}" alt="kk" width="100%">
+                                                    @endswitch
+                                                    @endif
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Foto
-                                                        Korban</label>
-                                                    <input type="file" name="foto_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="foto_korban-input" class="form-label">Foto Korban</label>
+                                                    <input type="file" name="foto_korban" class="form-control" id="foto_korban-input" accept="image/*" onchange="previewImage(event, 'foto_korban-preview')">
+                                                    @if ($pengaduan->foto_korban != null)
+                                                    @php
+                                                    $ext = pathinfo($pengaduan->foto_korban, PATHINFO_EXTENSION);
+                                                    @endphp
+                                                    @switch($ext)
+                                                    @case('pdf')
+                                                    <embed src="{{ asset($pengaduan->foto_korban) }}#toolbar=0" type="application/pdf"
+                                                        width="100%" height="600px" />
+                                                    @break
+
+                                                    @default
+                                                    <img src="{{ asset($pengaduan->foto_korban) }}" alt="foto_korban" width="100%">
+                                                    @endswitch
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -697,6 +750,25 @@
     </div>
     <!-- /Wizard -->
     </div>
+
+
+    <script>
+        function previewImage(event, previewId) {
+            const file = event.target.files[0];
+            const preview = document.getElementById(previewId);
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+    </script>
 
     <script>
         var id_kecamatan = @json($pengaduan -> kecamatan_korban);

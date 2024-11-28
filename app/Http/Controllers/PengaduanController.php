@@ -251,6 +251,7 @@ class PengaduanController extends Controller
         $kota = \Indonesia::search('balikpapan')->allDistricts();
 
         $pengaduan = Pengaduan::findOrFail($id);
+
         return view('admin.pengaduan.ubah', compact('pengaduan', 'user', 'layanan', 'kekerasan', 'kota'));
     }
 
@@ -302,6 +303,27 @@ class PengaduanController extends Controller
         $pengaduan->kronologis = $request->kronologis;
         $pengaduan->status = $request->status;
         $pengaduan->keterangan = $request->keterangan;
+
+        $pengaduan->jenisLayanan()->delete();
+        $pengaduan->jenisKekerasan()->delete();
+
+        for ($i = 0; $i < count($request->jenis_layanan); $i++) {
+            $dataLayanan[] = [
+                'pengaduan_id' => $pengaduan->id,
+                'jenis_layanan_id' => $request->jenis_layanan[$i]
+            ];
+        }
+
+        $pengaduan->jenisLayanan()->createMany($dataLayanan);
+
+        for ($i = 0; $i < count($request->jenis_kekerasan); $i++) {
+            $dataKekerasan[] = [
+                'pengaduan_id' => $pengaduan->id,
+                'jenis_kekerasan_id' => $request->jenis_kekerasan[$i]
+            ];
+        }
+
+        $pengaduan->jenisKekerasan()->createMany($dataKekerasan);
 
         function saveStorage($pengaduan, $request, $name)
         {

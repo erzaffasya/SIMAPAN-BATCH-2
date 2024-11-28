@@ -122,7 +122,7 @@
                                                     Penerima</label>
                                                 <select class="form-select" name="petugas_penerima">
                                                     @foreach ($user as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -133,8 +133,8 @@
                                                     Menangani</label>
                                                 <select class="form-select" name="petugas_menangani">
                                                     @foreach ($user as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}
-                                                        </option>
+                                                    <option value="{{ $item->id }}">{{ $item->name }}
+                                                    </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -296,8 +296,8 @@
                                                     <select class="form-select" id="kecamatan"
                                                         name="kecamatan_korban">
                                                         @foreach ($kota as $item)
-                                                            <option value="{{ $item->id }}">{{ $item->name }}
-                                                            </option>
+                                                        <option value="{{ $item->id }}">{{ $item->name }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -360,8 +360,9 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_layanan[]">
                                                         @foreach ($layanan as $item)
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->jenis_layanan }}</option>
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->jenis_layanan }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -374,9 +375,9 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
-                                                            <option value="{{ $item->id }}">
-                                                                {{ $item->jenis_kekerasan }}
-                                                            </option>
+                                                        <option value="{{ $item->id }}">
+                                                            {{ $item->jenis_kekerasan }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -559,37 +560,36 @@
                                                     <textarea name="keterangan" class="form-control"></textarea>
                                                 </div>
                                             </div>
-                                         
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input"
-                                                        class="form-label">KTP</label>
-                                                    <input type="file" name="ktp" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="ktp-input" class="form-label">KTP</label>
+                                                    <input type="file" name="ktp" class="form-control" id="ktp-input" accept="image/*" onchange="previewImage(event, 'ktp-preview')">
+                                                    <img id="ktp-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input"
-                                                        class="form-label">Akta</label>
-                                                    <input type="file" name="akta" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="akta-input" class="form-label">Akta</label>
+                                                    <input type="file" name="akta" class="form-control" id="akta-input" accept="image/*" onchange="previewImage(event, 'akta-preview')">
+                                                    <img id="akta-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input"
-                                                        class="form-label">KK</label>
-                                                    <input type="file" name="kk" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="kk-input" class="form-label">KK</label>
+                                                    <input type="file" name="kk" class="form-control" id="kk-input" accept="image/*" onchange="previewImage(event, 'kk-preview')">
+                                                    <img id="kk-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Foto
-                                                        Korban</label>
-                                                    <input type="file" name="foto_korban" class="form-control"
-                                                        id="basicpill-servicetax-input">
+                                                    <label for="foto_korban-input" class="form-label">Foto Korban</label>
+                                                    <input type="file" name="foto_korban" class="form-control" id="foto_korban-input" accept="image/*" onchange="previewImage(event, 'foto_korban-preview')">
+                                                    <img id="foto_korban-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -661,7 +661,8 @@
         }
         $(function() {
             $('#kecamatan').on('change', function() {
-                onChangeSelect('{{ route('villages') }}', $(this).val(), 'desa');
+                onChangeSelect('{{ route('
+                    villages ') }}', $(this).val(), 'desa');
             })
             $('#lahir_korban').on('change', function() {
                 const birthdate = document.getElementById('lahir_korban').value;
@@ -686,7 +687,6 @@
                 document.getElementById('usia_pelaku').value = age;
             })
         });
-        
     </script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script>
@@ -696,27 +696,27 @@
                 saveButton = wrapper.querySelector("[data-action=save]"),
                 canvas = wrapper.querySelector("canvas"),
                 signaturePad;
-    
+
             signaturePad = new SignaturePad(canvas, {
                 backgroundColor: "rgb(255,255,255)",
             });
-    
+
             // Function to save the signature
             function saveSignature() {
                 const signatureData = signaturePad.toDataURL();
-    
+
                 // Set the signature data to the hidden input
                 document.getElementById('signatureData').value = signatureData;
-    
+
                 // Optionally, you can submit the form here
                 // document.getElementById('yourFormId').submit();
             }
-    
+
             // Event listener to clear the signature
             clearButton.addEventListener("click", function(event) {
                 signaturePad.clear();
             });
-    
+
             // Event listener to save the signature
             saveButton.addEventListener("click", function(event) {
                 saveSignature();
