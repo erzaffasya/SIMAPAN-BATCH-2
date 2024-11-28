@@ -303,8 +303,6 @@ class PengaduanController extends Controller
         $pengaduan->status = $request->status;
         $pengaduan->keterangan = $request->keterangan;
 
-        $pengaduan->tandatangan_pelapor = $request->tandatangan_pelapor;
-
         function saveStorage($pengaduan, $request, $name)
         {
             if ($file = $request->{$name}) {
@@ -323,6 +321,28 @@ class PengaduanController extends Controller
         saveStorage($pengaduan, $request, "akta");
         saveStorage($pengaduan, $request, "kk");
         saveStorage($pengaduan, $request, "dokumen");
+
+        // update ttd
+        if ($request->signature!= null) {
+            if ($pengaduan->ttd != null) {
+                if (Storage::exists("app/public" . str_replace("storage", "", $pengaduan->ttd))) {
+                    Storage::delete("app/public" . str_replace("storage", "", $pengaduan->ttd));
+                }
+            }
+            $data_uri = $request->signature;
+            $encoded_image = explode(",", $data_uri)[1];
+            $decoded_image = base64_decode($encoded_image);
+            $path = storage_path("app/public/ttd/");
+            $filettd = uniqid() . '.png';
+            $file = $path . $filettd;
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+
+            file_put_contents($file, $decoded_image);
+            $pengaduan->ttd =  $filettd;
+        }
 
         $pengaduan->save();
         return redirect()->route('pengaduan.index')

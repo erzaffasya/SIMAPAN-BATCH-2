@@ -125,9 +125,10 @@
                                                     Penerima</label>
                                                 <select class="form-select" name="petugas_penerima">
                                                     @foreach ($user as $item)
-                                                        <option value="{{ $item->id }}"
-                                                            {{ $pengaduan->petugas_penerima == $item->id ? 'selected' : '' }}>
-                                                            {{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $pengaduan->petugas_penerima == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}
+                                                    </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -138,10 +139,10 @@
                                                     Menangani</label>
                                                 <select class="form-select" name="petugas_menangani">
                                                     @foreach ($user as $item)
-                                                        <option value="{{ $item->id }}"
-                                                            {{ $pengaduan->petugas_menangani == $item->id ? 'selected' : '' }}>
-                                                            {{ $item->name }}
-                                                        </option>
+                                                    <option value="{{ $item->id }}"
+                                                        {{ $pengaduan->petugas_menangani == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}
+                                                    </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -323,10 +324,10 @@
                                                         name="kecamatan_korban">
                                                         <option>==Pilih Salah Satu==</option>
                                                         @foreach ($kota as $item)
-                                                            <option value="{{ $item->id }}"
-                                                                {{ $pengaduan->kecamatan_korban == $item->id ? 'selected' : '' }}>
-                                                                {{ $item->name }}
-                                                            </option>
+                                                        <option value="{{ $item->id }}"
+                                                            {{ $pengaduan->kecamatan_korban == $item->id ? 'selected' : '' }}>
+                                                            {{ $item->name }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -394,10 +395,10 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_layanan[]">
                                                         @foreach ($layanan as $item)
-                                                            <option value="{{ $item->id }}"
-                                                                {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                                                {{ $item->jenis_layanan }}
-                                                            </option>
+                                                        <option value="{{ $item->id }}"
+                                                            {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                                            {{ $item->jenis_layanan }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -410,10 +411,10 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
-                                                            <option value="{{ $item->id }}"
-                                                                {{ in_array($item->id, $pengaduan->jenisKekerasan->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                                                {{ $item->jenis_kekerasan }}
-                                                            </option>
+                                                        <option value="{{ $item->id }}"
+                                                            {{ in_array($item->id, $pengaduan->jenisKekerasan->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                                            {{ $item->jenis_kekerasan }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -589,7 +590,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">DIFABEL/NON DIFABEL</label>
                                                     <select class="form-select" name="difabel_nondifabel">
-                                                        <option value="DIFABEL"  {{ $pengaduan->difabel_nondifabel == 'DIFABEL' ? 'selected' : '' }}>DIFABEL</option>
+                                                        <option value="DIFABEL" {{ $pengaduan->difabel_nondifabel == 'DIFABEL' ? 'selected' : '' }}>DIFABEL</option>
                                                         <option value="NON DIFABEL" {{ $pengaduan->difabel_nondifabel == 'NON DIFABEL' ? 'selected' : '' }}>NON DIFABEL</option>
                                                     </select>
                                                 </div>
@@ -616,22 +617,24 @@
                                                     <label for="basicpill-servicetax-input"
                                                         class="form-label">Keterangan</label>
                                                     <textarea name="keterangan" class="form-control">{{ $pengaduan->keterangan }}</textarea>
-                                                </div>
+                                                </div>  
                                             </div>
                                             <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda
-                                                        Tangan</label>
+                                                <div class="mb-3" id="signature-pad">
+                                                    <label for="basicpill-servicetax-input" class="form-label">Tanda Tangan</label>
                                                     <div class="m-signature-pad">
                                                         <div class="m-signature-pad--body">
-                                                            <canvas style="border: 2px dashed #ccc"></canvas>
+                                                            <canvas name="ttd"
+                                                                style="border: 2px dashed #ccc"></canvas>
                                                         </div>
 
                                                         <div class="m-signature-pad--footer">
                                                             <button type="button" class="btn btn-sm btn-secondary"
                                                                 data-action="clear">Clear</button>
-                                                            {{-- <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button> --}}
+                                                            <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button>
                                                         </div>
+
+                                                        <input type="hidden" name="signature" id="signatureData">
                                                     </div>
                                                 </div>
                                             </div>
@@ -696,8 +699,8 @@
     </div>
 
     <script>
-        var id_kecamatan = @json($pengaduan->kecamatan_korban);
-        var id_kelurahan = @json($pengaduan->kelurahan_korban);
+        var id_kecamatan = @json($pengaduan -> kecamatan_korban);
+        var id_kelurahan = @json($pengaduan -> kelurahan_korban);
 
         function onChangeSelect(url, id, name) {
             // send ajax request to get the cities of the selected province and append to the select tag
@@ -759,7 +762,6 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
     <script>
         $(function() {
-
             var wrapper = document.getElementById("signature-pad"),
                 clearButton = wrapper.querySelector("[data-action=clear]"),
                 saveButton = wrapper.querySelector("[data-action=save]"),
@@ -769,17 +771,29 @@
             signaturePad = new SignaturePad(canvas, {
                 backgroundColor: "rgb(255,255,255)",
             });
-            // canvas.select = function(){
-            //     window.scrollTo(0, 0);
-            //     document.body.scrollTop = 0;
-            // };
-            canvas.focus({
-                preventScroll: true
-            });
+
+            // Function to save the signature
+            function saveSignature() {
+                const signatureData = signaturePad.toDataURL();
+
+                // Set the signature data to the hidden input
+                document.getElementById('signatureData').value = signatureData;
+
+                // Optionally, you can submit the form here
+                // document.getElementById('yourFormId').submit();
+            }
+
+            // Event listener to clear the signature
             clearButton.addEventListener("click", function(event) {
                 signaturePad.clear();
             });
+
+            // Event listener to save the signature
+            saveButton.addEventListener("click", function(event) {
+                saveSignature();
+            });
         });
     </script>
+
 
 </x-app-layout>
