@@ -250,8 +250,7 @@ class PengaduanController extends Controller
         $kekerasan = JenisKekerasan::all();
         $kota = \Indonesia::search('balikpapan')->allDistricts();
 
-        $pengaduan = Pengaduan::findOrFail($id);
-
+        $pengaduan = Pengaduan::with(['jenisLayanan', 'jenisKekerasan'])->findOrFail($id);
         return view('admin.pengaduan.ubah', compact('pengaduan', 'user', 'layanan', 'kekerasan', 'kota'));
     }
 

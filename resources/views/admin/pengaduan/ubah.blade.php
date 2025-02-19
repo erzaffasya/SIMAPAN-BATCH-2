@@ -296,8 +296,9 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Korban</label>
-                                                    <input type="date" name="lahir_korban" class="form-control"
-                                                        id="lahir_korban" value="{{ $pengaduan->lahir_korban->format('Y-m-d') }}">
+                                                        <input type="date" name="lahir_korban" class="form-control"
+                                                        id="lahir_korban" value="{{ $pengaduan->lahir_korban ? $pengaduan->lahir_korban->format('Y-m-d') : '' }}">
+                                                    
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -396,7 +397,7 @@
                                                         name="jenis_layanan[]">
                                                         @foreach ($layanan as $item)
                                                         <option value="{{ $item->id }}"
-                                                            {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                                            {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('jenis_layanan_id')->toArray()) ? 'selected' : '' }}>
                                                             {{ $item->jenis_layanan }}
                                                         </option>
                                                         @endforeach
@@ -412,7 +413,7 @@
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
                                                         <option value="{{ $item->id }}"
-                                                            {{ in_array($item->id, $pengaduan->jenisKekerasan->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                                            {{ in_array($item->id, $pengaduan->jenisKekerasan->pluck('jenis_kekerasan_id')->toArray()) ? 'selected' : '' }}>
                                                             {{ $item->jenis_kekerasan }}
                                                         </option>
                                                         @endforeach

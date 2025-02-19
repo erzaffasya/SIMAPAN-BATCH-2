@@ -26,6 +26,11 @@ class Pengaduan extends Model
         return $this->hasMany(JenisLayananPengaduan::class);
     }
 
+    function jenisKekerasan()
+    {
+        return $this->hasMany(JenisKekerasanPengaduan::class);
+    }
+
     function lJenisLayanan()
     {
         return $this->hasManyThrough(JenisLayanan::class, JenisLayananPengaduan::class, "pengaduan_id", "id", "id", "jenis_layanan_id");
@@ -36,10 +41,6 @@ class Pengaduan extends Model
         return $this->hasManyThrough(JenisKekerasan::class, JenisKekerasanPengaduan::class, "pengaduan_id", "id", "id", "jenis_kekerasan_id");
     }
 
-    function jenisKekerasan()
-    {
-        return $this->hasMany(JenisKekerasanPengaduan::class);
-    }
 
     function petugasPenerima()
     {
