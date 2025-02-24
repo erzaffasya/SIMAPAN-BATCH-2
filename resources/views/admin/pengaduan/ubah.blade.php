@@ -394,7 +394,7 @@
                                                     <label for="basicpill-servicetax-input" class="form-label">Layanan
                                                         Yang Diberikan</label>
                                                     <select class="form-select" multiple="true"
-                                                        name="jenis_layanan[]">
+                                                        name="jenis_layanan[]" required>
                                                         @foreach ($layanan as $item)
                                                         <option value="{{ $item->id }}"
                                                             {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('jenis_layanan_id')->toArray()) ? 'selected' : '' }}>
@@ -409,7 +409,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Jenis
                                                         Kekerasan</label>
-                                                    <select class="form-select" multiple="true"
+                                                    <select class="form-select" multiple="true" required
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
                                                         <option value="{{ $item->id }}"

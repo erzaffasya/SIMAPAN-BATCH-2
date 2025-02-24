@@ -210,26 +210,38 @@ class PengaduanController extends Controller
             'kk' => $datakk,
             'foto_korban' => $datafotokorban
         ]);
+        // Pastikan dataLayanan tidak error saat $request->jenis_layanan null atau tidak ada
+        $dataLayanan = [];
+        $jenisLayanan = $request->jenis_layanan ?? []; // Jika null, default jadi array kosong
 
-        // dd($request->all());
-        for ($i = 0; $i < count($request->jenis_layanan); $i++) {
+        for ($i = 0; $i < count($jenisLayanan); $i++) {
             $dataLayanan[] = [
                 'pengaduan_id' => $Pengaduan->id,
-                'jenis_layanan_id' => $request->jenis_layanan[$i]
+                'jenis_layanan_id' => $jenisLayanan[$i]
             ];
         }
 
-        $Pengaduan->jenisLayanan()->createMany($dataLayanan);
+        // Cek apakah dataLayanan tidak kosong sebelum createMany
+        if (!empty($dataLayanan)) {
+            $Pengaduan->jenisLayanan()->createMany($dataLayanan);
+        }
 
+        // Pastikan dataKekerasan tidak error saat $request->jenis_kekerasan null atau tidak ada
+        $dataKekerasan = [];
+        $jenisKekerasan = $request->jenis_kekerasan ?? []; // Jika null, default jadi array kosong
 
-        for ($i = 0; $i < count($request->jenis_kekerasan); $i++) {
+        for ($i = 0; $i < count($jenisKekerasan); $i++) {
             $dataKekerasan[] = [
                 'pengaduan_id' => $Pengaduan->id,
-                'jenis_kekerasan_id' => $request->jenis_kekerasan[$i]
+                'jenis_kekerasan_id' => $jenisKekerasan[$i]
             ];
         }
 
-        $Pengaduan->jenisKekerasan()->createMany($dataKekerasan);
+        // Cek apakah dataKekerasan tidak kosong sebelum createMany
+        if (!empty($dataKekerasan)) {
+            $Pengaduan->jenisKekerasan()->createMany($dataKekerasan);
+        }
+
         // 'foto' => $file_name,
         return redirect()->route('pengaduan.index')
             ->with('success', 'Pengaduan Berhasil Ditambahkan');
@@ -306,23 +318,37 @@ class PengaduanController extends Controller
         $pengaduan->jenisLayanan()->delete();
         $pengaduan->jenisKekerasan()->delete();
 
-        for ($i = 0; $i < count($request->jenis_layanan); $i++) {
+        // Pastikan dataLayanan tidak error saat $request->jenis_layanan null atau tidak ada
+        $dataLayanan = [];
+        $jenisLayanan = $request->jenis_layanan ?? []; // Jika null, default jadi array kosong
+
+        for ($i = 0; $i < count($jenisLayanan); $i++) {
             $dataLayanan[] = [
                 'pengaduan_id' => $pengaduan->id,
-                'jenis_layanan_id' => $request->jenis_layanan[$i]
+                'jenis_layanan_id' => $jenisLayanan[$i]
             ];
         }
 
-        $pengaduan->jenisLayanan()->createMany($dataLayanan);
+        // Cek apakah dataLayanan tidak kosong sebelum createMany
+        if (!empty($dataLayanan)) {
+            $pengaduan->jenisLayanan()->createMany($dataLayanan);
+        }
 
-        for ($i = 0; $i < count($request->jenis_kekerasan); $i++) {
+        // Pastikan dataKekerasan tidak error saat $request->jenis_kekerasan null atau tidak ada
+        $dataKekerasan = [];
+        $jenisKekerasan = $request->jenis_kekerasan ?? []; // Jika null, default jadi array kosong
+
+        for ($i = 0; $i < count($jenisKekerasan); $i++) {
             $dataKekerasan[] = [
                 'pengaduan_id' => $pengaduan->id,
-                'jenis_kekerasan_id' => $request->jenis_kekerasan[$i]
+                'jenis_kekerasan_id' => $jenisKekerasan[$i]
             ];
         }
 
-        $pengaduan->jenisKekerasan()->createMany($dataKekerasan);
+        // Cek apakah dataKekerasan tidak kosong sebelum createMany
+        if (!empty($dataKekerasan)) {
+            $pengaduan->jenisKekerasan()->createMany($dataKekerasan);
+        }
 
         function saveStorage($pengaduan, $request, $name)
         {
@@ -344,7 +370,7 @@ class PengaduanController extends Controller
         saveStorage($pengaduan, $request, "dokumen");
 
         // update ttd
-        if ($request->signature!= null) {
+        if ($request->signature != null) {
             if ($pengaduan->ttd != null) {
                 if (Storage::exists("app/public" . str_replace("storage", "", $pengaduan->ttd))) {
                     Storage::delete("app/public" . str_replace("storage", "", $pengaduan->ttd));
