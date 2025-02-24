@@ -43,6 +43,7 @@ class PengaduanController extends Controller
         $kekerasan = JenisKekerasan::all();
 
         $kota = \Indonesia::search('balikpapan')->allDistricts();
+        
         // dd($kota);
         return view('admin.pengaduan.tambah', compact('user', 'layanan', 'kekerasan', 'kota'));
     }

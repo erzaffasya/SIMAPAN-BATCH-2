@@ -659,10 +659,10 @@
                 }
             });
         }
+        onChangeSelect('{{ route('villages') }}', id_kecamatan, 'desa');
         $(function() {
             $('#kecamatan').on('change', function() {
-                onChangeSelect('{{ route('
-                    villages ') }}', $(this).val(), 'desa');
+                onChangeSelect('{{ route('villages') }}', $(this).val(), 'desa');
             })
             $('#lahir_korban').on('change', function() {
                 const birthdate = document.getElementById('lahir_korban').value;
