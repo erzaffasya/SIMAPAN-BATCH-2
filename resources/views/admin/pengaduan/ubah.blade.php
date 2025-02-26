@@ -113,7 +113,7 @@
                                                     Registrasi</label>
                                                 <input type="date" name="tanggal_registrasi" class="form-control"
                                                     id="basicpill-lastname-input"
-                                                    value="{{ $pengaduan->tanggal_registrasi->format('Y-m-d') }}">
+                                                    value="{{ $pengaduan->tanggal_registrasi ? $pengaduan->tanggal_registrasi->format('Y-m-d') : '' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +164,7 @@
                                     </div>
                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
                                         <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a>
+                                                >Next <i class="bx bx-chevron-right ms-1"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -230,11 +230,11 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                    class="btn btn-primary" ><i
                                                         class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
                                             <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    onclick="nextTab()">Next <i
+                                                    >Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -423,11 +423,11 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                    class="btn btn-primary" ><i
                                                         class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
                                             <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    onclick="nextTab()">Next <i
+                                                    >Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -470,7 +470,7 @@
                                                         Tanggal Lahir Pelaku</label>
                                                     <input type="date" name="lahir_pelaku" class="form-control"
                                                         id="lahir_pelaku"
-                                                        value="{{ $pengaduan->lahir_pelaku->format('Y-m-d') }}">
+                                                        value="{{ $pengaduan->lahir_pelaku ? $pengaduan->lahir_pelaku->format('Y-m-d') : ''}}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -537,11 +537,11 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                    class="btn btn-primary" ><i
                                                         class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
                                             <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    onclick="nextTab()">Next <i
+                                                    >Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -638,7 +638,7 @@
 
                                                         <input type="hidden" name="signature" id="signatureData">
                                                     </div>
-                                                    <img src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}" alt="ttd" width="100%">
+                                                    <img src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}" alt="ttd" width="200">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -652,11 +652,11 @@
                                                     @switch($ext)
                                                     @case('pdf')
                                                     <embed src="{{ asset($pengaduan->ktp) }}#toolbar=0" type="application/pdf"
-                                                        width="100%" height="600px" />
+                                                        width="200" height="600px" />
                                                     @break
 
                                                     @default
-                                                    <img src="{{ asset($pengaduan->ktp) }}" alt="ktp" width="100%">
+                                                    <img src="{{ asset($pengaduan->ktp) }}" alt="ktp" width="200">
                                                     @endswitch
                                                     @endif
                                                 </div>
@@ -673,11 +673,11 @@
                                                     @switch($ext)
                                                     @case('pdf')
                                                     <embed src="{{ asset($pengaduan->akta) }}#toolbar=0" type="application/pdf"
-                                                        width="100%" height="600px" />
+                                                        width="200" height="600px" />
                                                     @break
 
                                                     @default
-                                                    <img src="{{ asset($pengaduan->akta) }}" alt="akta" width="100%">
+                                                    <img src="{{ asset($pengaduan->akta) }}" alt="akta" width="200">
                                                     @endswitch
                                                     @endif
                                                 </div>
@@ -694,11 +694,11 @@
                                                     @switch($ext)
                                                     @case('pdf')
                                                     <embed src="{{ asset($pengaduan->kk) }}#toolbar=0" type="application/pdf"
-                                                        width="100%" height="600px" />
+                                                        width="200" height="600px" />
                                                     @break
 
                                                     @default
-                                                    <img src="{{ asset($pengaduan->kk) }}" alt="kk" width="100%">
+                                                    <img src="{{ asset($pengaduan->kk) }}" alt="kk" width="200">
                                                     @endswitch
                                                     @endif
                                                 </div>
@@ -715,11 +715,11 @@
                                                     @switch($ext)
                                                     @case('pdf')
                                                     <embed src="{{ asset($pengaduan->foto_korban) }}#toolbar=0" type="application/pdf"
-                                                        width="100%" height="600px" />
+                                                        width="200" height="600px" />
                                                     @break
 
                                                     @default
-                                                    <img src="{{ asset($pengaduan->foto_korban) }}" alt="foto_korban" width="100%">
+                                                    <img src="{{ asset($pengaduan->foto_korban) }}" alt="foto_korban" width="200">
                                                     @endswitch
                                                     @endif
                                                 </div>
@@ -727,7 +727,7 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
+                                                    class="btn btn-primary" ><i
                                                         class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
                                             <button class="btn btn-primary float-end">Save

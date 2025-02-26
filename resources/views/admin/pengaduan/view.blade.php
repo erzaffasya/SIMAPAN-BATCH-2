@@ -295,7 +295,7 @@
                                         @break
 
                                         @default
-                                            <img src="{{ asset($pengaduan->ktp) }}" alt="ktp" width="100%">
+                                            <img src="{{ asset($pengaduan->ktp) }}" alt="ktp" width="300">
                                     @endswitch
                                 @endif
                             </div>
@@ -315,7 +315,7 @@
                                         @break
 
                                         @default
-                                            <img src="{{ asset($pengaduan->akta) }}" alt="akta" width="100%">
+                                            <img src="{{ asset($pengaduan->akta) }}" alt="akta" width="300">
                                     @endswitch
                                 @endif
                             </div>
@@ -335,7 +335,7 @@
                                         @break
 
                                         @default
-                                            <img src="{{ asset($pengaduan->kk) }}" alt="kk" width="100%">
+                                            <img src="{{ asset($pengaduan->kk) }}" alt="kk" width="300">
                                     @endswitch
                                 @endif
                             </div>
@@ -355,7 +355,7 @@
                                         @break
 
                                         @default
-                                            <img src="{{ asset($pengaduan->foto_korban) }}" alt="foto_korban" width="100%">
+                                            <img src="{{ asset($pengaduan->foto_korban) }}" alt="foto_korban" width="300">
                                     @endswitch
                                 @endif
                             </div>

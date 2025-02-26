@@ -107,9 +107,9 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label for="basicpill-lastname-input" class="form-label">Tanggal
+                                                <label for="basicpill-lastname-input" required class="form-label">Tanggal
                                                     Registrasi</label>
-                                                <input type="date" name="tanggal_registrasi" class="form-control"
+                                                <input type="date" required name="tanggal_registrasi" class="form-control"
                                                     id="basicpill-lastname-input">
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@
                                                     Penerima</label>
                                                 <select class="form-select" name="petugas_penerima">
                                                     @foreach ($user as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -133,8 +133,8 @@
                                                     Menangani</label>
                                                 <select class="form-select" name="petugas_menangani">
                                                     @foreach ($user as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name }}
-                                                    </option>
+                                                        <option value="{{ $item->id }}">{{ $item->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -151,8 +151,9 @@
                                         </div>
                                     </div>
                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a>
+                                        <li class="next"><a href="javascript: void(0);"
+                                                class="btn btn-primary">Next <i
+                                                    class="bx bx-chevron-right ms-1"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -211,11 +212,10 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    onclick="nextTab()">Next <i
+                                            <li class="next"><a href="javascript: void(0);"
+                                                    class="btn btn-primary">Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -270,7 +270,7 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Korban</label>
-                                                    <input type="date" name="lahir_korban" class="form-control"
+                                                    <input type="date" name="lahir_korban" required class="form-control"
                                                         id="lahir_korban">
                                                 </div>
                                             </div>
@@ -295,9 +295,10 @@
                                                         class="form-label">Kecamatan</label>
                                                     <select class="form-select" id="kecamatan"
                                                         name="kecamatan_korban">
+                                                        <option>==Pilih Salah Satu==</option>
                                                         @foreach ($kota as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}
-                                                        </option>
+                                                            <option value="{{ $item->id }}">{{ $item->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -360,9 +361,9 @@
                                                     <select class="form-select" multiple="true" required
                                                         name="jenis_layanan[]">
                                                         @foreach ($layanan as $item)
-                                                        <option value="{{ $item->id }}">
-                                                            {{ $item->jenis_layanan }}
-                                                        </option>
+                                                            <option value="{{ $item->id }}">
+                                                                {{ $item->jenis_layanan }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -375,9 +376,9 @@
                                                     <select class="form-select" multiple="true" required
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
-                                                        <option value="{{ $item->id }}">
-                                                            {{ $item->jenis_kekerasan }}
-                                                        </option>
+                                                            <option value="{{ $item->id }}">
+                                                                {{ $item->jenis_kekerasan }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -385,11 +386,10 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    onclick="nextTab()">Next <i
+                                            <li class="next"><a href="javascript: void(0);"
+                                                    class="btn btn-primary">Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -488,11 +488,10 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    onclick="nextTab()">Next <i
+                                            <li class="next"><a href="javascript: void(0);"
+                                                    class="btn btn-primary">Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -535,7 +534,8 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">DIFABEL/NON DIFABEL</label>
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">DIFABEL/NON DIFABEL</label>
                                                     <select class="form-select" name="difabel_nondifabel">
                                                         <option value="DIFABEL">DIFABEL</option>
                                                         <option value="NON DIFABEL">NON DIFABEL</option>
@@ -564,32 +564,45 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="ktp-input" class="form-label">KTP</label>
-                                                    <input type="file" name="ktp" class="form-control" id="ktp-input" accept="image/*" onchange="previewImage(event, 'ktp-preview')">
-                                                    <img id="ktp-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
+                                                    <input type="file" name="ktp" class="form-control"
+                                                        id="ktp-input" accept="image/*"
+                                                        onchange="previewImage(event, 'ktp-preview')">
+                                                    <img id="ktp-preview"
+                                                        style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="akta-input" class="form-label">Akta</label>
-                                                    <input type="file" name="akta" class="form-control" id="akta-input" accept="image/*" onchange="previewImage(event, 'akta-preview')">
-                                                    <img id="akta-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
+                                                    <input type="file" name="akta" class="form-control"
+                                                        id="akta-input" accept="image/*"
+                                                        onchange="previewImage(event, 'akta-preview')">
+                                                    <img id="akta-preview"
+                                                        style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="kk-input" class="form-label">KK</label>
-                                                    <input type="file" name="kk" class="form-control" id="kk-input" accept="image/*" onchange="previewImage(event, 'kk-preview')">
-                                                    <img id="kk-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
+                                                    <input type="file" name="kk" class="form-control"
+                                                        id="kk-input" accept="image/*"
+                                                        onchange="previewImage(event, 'kk-preview')">
+                                                    <img id="kk-preview"
+                                                        style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="foto_korban-input" class="form-label">Foto Korban</label>
-                                                    <input type="file" name="foto_korban" class="form-control" id="foto_korban-input" accept="image/*" onchange="previewImage(event, 'foto_korban-preview')">
-                                                    <img id="foto_korban-preview" style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
+                                                    <label for="foto_korban-input" class="form-label">Foto
+                                                        Korban</label>
+                                                    <input type="file" name="foto_korban" class="form-control"
+                                                        id="foto_korban-input" accept="image/*"
+                                                        onchange="previewImage(event, 'foto_korban-preview')">
+                                                    <img id="foto_korban-preview"
+                                                        style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -605,7 +618,8 @@
                                                         <div class="m-signature-pad--footer">
                                                             <button type="button" class="btn btn-sm btn-secondary"
                                                                 data-action="clear">Clear</button>
-                                                            <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button>
+                                                            <button type="button" class="btn btn-sm btn-primary"
+                                                                data-action="save">Save</button>
                                                         </div>
 
                                                         <input type="hidden" name="signature" id="signatureData">
@@ -615,8 +629,7 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" onclick="nextTab()"><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
                                             <button class="btn btn-primary float-end">Save
                                                 Changes</button>
@@ -641,6 +654,50 @@
     </div>
 
     <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            let layananSelect = document.querySelector("select[name='jenis_layanan[]']");
+            let kekerasanSelect = document.querySelector("select[name='jenis_kekerasan[]']");
+            let signatureInput = document.getElementById('signatureData');
+
+            let requiredInputs = document.querySelectorAll("input[required], select[required], textarea[required]");
+            let isValid = true;
+            let message = "";
+
+            // Cek semua input yang required (selain select multiple)
+            requiredInputs.forEach(input => {
+                if (!input.value.trim()) {
+                    message +=
+                        `Harap isi ${input.previousElementSibling ? input.previousElementSibling.textContent : 'semua field wajib'}.\n`;
+                    isValid = false;
+                }
+            });
+
+            // Cek input select multiple (jenis layanan & jenis kekerasan)
+            if (layananSelect.selectedOptions.length === 0) {
+                message += "Harap pilih setidaknya satu layanan.\n";
+                isValid = false;
+                layananSelect.focus();
+            }
+            if (kekerasanSelect.selectedOptions.length === 0) {
+                message += "Harap pilih setidaknya satu jenis kekerasan.\n";
+                isValid = false;
+                kekerasanSelect.focus();
+            }
+
+            // Cek apakah tanda tangan sudah diisi
+            if (!signatureInput.value.trim()) {
+                message += "Harap isi tanda tangan sebelum mengirim formulir.\n";
+                isValid = false;
+            }
+
+            // Jika ada kesalahan, tampilkan alert dan batalkan submit
+            if (!isValid) {
+                alert(message);
+                event.preventDefault();
+            }
+        });
+
+
         function onChangeSelect(url, id, name) {
             // send ajax request to get the cities of the selected province and append to the select tag
             $.ajax({
@@ -659,7 +716,6 @@
                 }
             });
         }
-        onChangeSelect('{{ route('villages') }}', id_kecamatan, 'desa');
         $(function() {
             $('#kecamatan').on('change', function() {
                 onChangeSelect('{{ route('villages') }}', $(this).val(), 'desa');

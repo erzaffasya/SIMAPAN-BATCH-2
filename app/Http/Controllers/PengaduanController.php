@@ -32,7 +32,7 @@ class PengaduanController extends Controller
         if ($year) {
             $Pengaduan = $Pengaduan->whereYear("tanggal_registrasi", $year);
         }
-        $Pengaduan = $Pengaduan->get();
+        $Pengaduan = $Pengaduan->orderBy("id", "DESC")->get();
         return view('admin.pengaduan.index', compact('Pengaduan', "year", "status"));
     }
 
