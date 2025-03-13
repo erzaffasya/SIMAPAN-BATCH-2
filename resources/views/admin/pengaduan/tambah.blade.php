@@ -565,7 +565,7 @@
                                                 <div class="mb-3">
                                                     <label for="ktp-input" class="form-label">KTP</label>
                                                     <input type="file" name="ktp" class="form-control"
-                                                        id="ktp-input" accept="image/*"
+                                                        id="ktp-input" 
                                                         onchange="previewImage(event, 'ktp-preview')">
                                                     <img id="ktp-preview"
                                                         style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
@@ -576,7 +576,7 @@
                                                 <div class="mb-3">
                                                     <label for="akta-input" class="form-label">Akta</label>
                                                     <input type="file" name="akta" class="form-control"
-                                                        id="akta-input" accept="image/*"
+                                                        id="akta-input" 
                                                         onchange="previewImage(event, 'akta-preview')">
                                                     <img id="akta-preview"
                                                         style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
@@ -587,7 +587,7 @@
                                                 <div class="mb-3">
                                                     <label for="kk-input" class="form-label">KK</label>
                                                     <input type="file" name="kk" class="form-control"
-                                                        id="kk-input" accept="image/*"
+                                                        id="kk-input" 
                                                         onchange="previewImage(event, 'kk-preview')">
                                                     <img id="kk-preview"
                                                         style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
