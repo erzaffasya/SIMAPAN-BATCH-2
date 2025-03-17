@@ -9,7 +9,7 @@
         content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
-    <title>Login - UPTD PPA DP3AKB Kota Balikpapan</title>
+    <title>BADAI PELAPORAN - BANK DATA DAN INTEGRASI PELAPORAN</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('tadmin/assets/img/icon.ico') }}">
@@ -45,7 +45,7 @@
                             
                             <div class="login-userheading">
                                 <img src="{{asset('tadmin/assets/img/logo-pemkot.png')}}" style="width: 70px"  alt="">
-                                <h3>Selamat Datang di UPTD PPA DP3AKB Kota Balikpapan</h3>
+                                <h3>Selamat Datang di BADAI PELAPORAN - BANK DATA DAN INTEGRASI PELAPORAN</h3>
                                 <h4>Masukkan akun anda dengan benar !</h4>
                             </div>
                             <div class="form-login">
