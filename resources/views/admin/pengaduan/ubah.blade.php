@@ -125,10 +125,10 @@
                                                     Penerima</label>
                                                 <select class="form-select" name="petugas_penerima">
                                                     @foreach ($user as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        {{ $pengaduan->petugas_penerima == $item->id ? 'selected' : '' }}>
-                                                        {{ $item->name }}
-                                                    </option>
+                                                        <option value="{{ $item->id }}"
+                                                            {{ $pengaduan->petugas_penerima == $item->id ? 'selected' : '' }}>
+                                                            {{ $item->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -139,10 +139,10 @@
                                                     Menangani</label>
                                                 <select class="form-select" name="petugas_menangani">
                                                     @foreach ($user as $item)
-                                                    <option value="{{ $item->id }}"
-                                                        {{ $pengaduan->petugas_menangani == $item->id ? 'selected' : '' }}>
-                                                        {{ $item->name }}
-                                                    </option>
+                                                        <option value="{{ $item->id }}"
+                                                            {{ $pengaduan->petugas_menangani == $item->id ? 'selected' : '' }}>
+                                                            {{ $item->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -163,8 +163,9 @@
                                         </div>
                                     </div>
                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                >Next <i class="bx bx-chevron-right ms-1"></i></a>
+                                        <li class="next"><a href="javascript: void(0);"
+                                                class="btn btn-primary">Next <i
+                                                    class="bx bx-chevron-right ms-1"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -230,11 +231,10 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" ><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    >Next <i
+                                            <li class="next"><a href="javascript: void(0);"
+                                                    class="btn btn-primary">Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -294,11 +294,17 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tempat,
-                                                        Tanggal Lahir Korban</label>
-                                                        <input type="date" name="lahir_korban" class="form-control"
-                                                        id="lahir_korban" value="{{ $pengaduan->lahir_korban ? $pengaduan->lahir_korban->format('Y-m-d') : '' }}">
-                                                    
+                                                    <label for="lahir_korban" class="form-label">Tempat, Tanggal Lahir
+                                                        Korban</label>
+                                                    <div class="d-flex gap-2">
+                                                        <input type="text" name="tempat_lahir_korban"
+                                                            class="form-control" id="tempat_lahir_korban"
+                                                            placeholder="Tempat Lahir"
+                                                            value="{{ $pengaduan->tempat_lahir_korban }}">
+                                                        <input type="date" name="lahir_korban"
+                                                            class="form-control" id="lahir_korban"
+                                                            value="{{ $pengaduan->lahir_korban ? $pengaduan->lahir_korban->format('Y-m-d') : '' }}">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -325,10 +331,10 @@
                                                         name="kecamatan_korban">
                                                         <option>==Pilih Salah Satu==</option>
                                                         @foreach ($kota as $item)
-                                                        <option value="{{ $item->id }}"
-                                                            {{ $pengaduan->kecamatan_korban == $item->id ? 'selected' : '' }}>
-                                                            {{ $item->name }}
-                                                        </option>
+                                                            <option value="{{ $item->id }}"
+                                                                {{ $pengaduan->kecamatan_korban == $item->id ? 'selected' : '' }}>
+                                                                {{ $item->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -396,10 +402,10 @@
                                                     <select class="form-select" multiple="true"
                                                         name="jenis_layanan[]" required>
                                                         @foreach ($layanan as $item)
-                                                        <option value="{{ $item->id }}"
-                                                            {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('jenis_layanan_id')->toArray()) ? 'selected' : '' }}>
-                                                            {{ $item->jenis_layanan }}
-                                                        </option>
+                                                            <option value="{{ $item->id }}"
+                                                                {{ in_array($item->id, $pengaduan->jenisLayanan->pluck('jenis_layanan_id')->toArray()) ? 'selected' : '' }}>
+                                                                {{ $item->jenis_layanan }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -412,10 +418,10 @@
                                                     <select class="form-select" multiple="true" required
                                                         name="jenis_kekerasan[]">
                                                         @foreach ($kekerasan as $item)
-                                                        <option value="{{ $item->id }}"
-                                                            {{ in_array($item->id, $pengaduan->jenisKekerasan->pluck('jenis_kekerasan_id')->toArray()) ? 'selected' : '' }}>
-                                                            {{ $item->jenis_kekerasan }}
-                                                        </option>
+                                                            <option value="{{ $item->id }}"
+                                                                {{ in_array($item->id, $pengaduan->jenisKekerasan->pluck('jenis_kekerasan_id')->toArray()) ? 'selected' : '' }}>
+                                                                {{ $item->jenis_kekerasan }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -423,11 +429,10 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" ><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    >Next <i
+                                            <li class="next"><a href="javascript: void(0);"
+                                                    class="btn btn-primary">Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -468,9 +473,15 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Pelaku</label>
-                                                    <input type="date" name="lahir_pelaku" class="form-control"
-                                                        id="lahir_pelaku"
-                                                        value="{{ $pengaduan->lahir_pelaku ? $pengaduan->lahir_pelaku->format('Y-m-d') : ''}}">
+                                                    <div class="d-flex gap-2">
+                                                        <input type="text" name="tempat_lahir_pelaku"
+                                                            class="form-control" id="tempat_lahir_pelaku"
+                                                            placeholder="Tempat Lahir"
+                                                            value="{{ $pengaduan->tempat_lahir_pelaku }}">
+                                                        <input type="date" name="lahir_pelaku"
+                                                            class="form-control" id="lahir_pelaku"
+                                                            value="{{ $pengaduan->lahir_pelaku ? $pengaduan->lahir_pelaku->format('Y-m-d') : '' }}">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -537,11 +548,10 @@
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" ><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
-                                            <li class="next"><a href="javascript: void(0);" class="btn btn-primary"
-                                                    >Next <i
+                                            <li class="next"><a href="javascript: void(0);"
+                                                    class="btn btn-primary">Next <i
                                                         class="bx bx-chevron-right ms-1"></i></a>
                                             </li>
                                         </ul>
@@ -589,10 +599,15 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">DIFABEL/NON DIFABEL</label>
+                                                    <label for="basicpill-servicetax-input"
+                                                        class="form-label">DIFABEL/NON DIFABEL</label>
                                                     <select class="form-select" name="difabel_nondifabel">
-                                                        <option value="DIFABEL" {{ $pengaduan->difabel_nondifabel == 'DIFABEL' ? 'selected' : '' }}>DIFABEL</option>
-                                                        <option value="NON DIFABEL" {{ $pengaduan->difabel_nondifabel == 'NON DIFABEL' ? 'selected' : '' }}>NON DIFABEL</option>
+                                                        <option value="DIFABEL"
+                                                            {{ $pengaduan->difabel_nondifabel == 'DIFABEL' ? 'selected' : '' }}>
+                                                            DIFABEL</option>
+                                                        <option value="NON DIFABEL"
+                                                            {{ $pengaduan->difabel_nondifabel == 'NON DIFABEL' ? 'selected' : '' }}>
+                                                            NON DIFABEL</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -633,31 +648,36 @@
                                                         <div class="m-signature-pad--footer">
                                                             <button type="button" class="btn btn-sm btn-secondary"
                                                                 data-action="clear">Clear</button>
-                                                            <button type="button" class="btn btn-sm btn-primary" data-action="save">Save</button>
+                                                            <button type="button" class="btn btn-sm btn-primary"
+                                                                data-action="save">Save</button>
                                                         </div>
 
                                                         <input type="hidden" name="signature" id="signatureData">
                                                     </div>
-                                                    <img src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}" alt="ttd" width="200">
+                                                    <img src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}"
+                                                        alt="ttd" width="200">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="ktp-input" class="form-label">KTP</label>
-                                                    <input type="file" name="ktp" class="form-control" id="ktp-input" accept="image/*" onchange="previewImage(event, 'ktp-preview')">
+                                                    <input type="file" name="ktp" class="form-control"
+                                                        id="ktp-input" accept="image/*"
+                                                        onchange="previewImage(event, 'ktp-preview')">
                                                     @if ($pengaduan->ktp != null)
-                                                    @php
-                                                    $ext = pathinfo($pengaduan->ktp, PATHINFO_EXTENSION);
-                                                    @endphp
-                                                    @switch($ext)
-                                                    @case('pdf')
-                                                    <embed src="{{ asset($pengaduan->ktp) }}#toolbar=0" type="application/pdf"
-                                                        width="200" height="600px" />
-                                                    @break
+                                                        @php
+                                                            $ext = pathinfo($pengaduan->ktp, PATHINFO_EXTENSION);
+                                                        @endphp
+                                                        @switch($ext)
+                                                            @case('pdf')
+                                                                <embed src="{{ asset($pengaduan->ktp) }}#toolbar=0"
+                                                                    type="application/pdf" width="200" height="600px" />
+                                                            @break
 
-                                                    @default
-                                                    <img src="{{ asset($pengaduan->ktp) }}" alt="ktp" width="200">
-                                                    @endswitch
+                                                            @default
+                                                                <img src="{{ asset($pengaduan->ktp) }}" alt="ktp"
+                                                                    width="200">
+                                                        @endswitch
                                                     @endif
                                                 </div>
                                             </div>
@@ -665,20 +685,23 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="akta-input" class="form-label">Akta</label>
-                                                    <input type="file" name="akta" class="form-control" id="akta-input" accept="image/*" onchange="previewImage(event, 'akta-preview')">
+                                                    <input type="file" name="akta" class="form-control"
+                                                        id="akta-input" accept="image/*"
+                                                        onchange="previewImage(event, 'akta-preview')">
                                                     @if ($pengaduan->akta != null)
-                                                    @php
-                                                    $ext = pathinfo($pengaduan->akta, PATHINFO_EXTENSION);
-                                                    @endphp
-                                                    @switch($ext)
-                                                    @case('pdf')
-                                                    <embed src="{{ asset($pengaduan->akta) }}#toolbar=0" type="application/pdf"
-                                                        width="200" height="600px" />
-                                                    @break
+                                                        @php
+                                                            $ext = pathinfo($pengaduan->akta, PATHINFO_EXTENSION);
+                                                        @endphp
+                                                        @switch($ext)
+                                                            @case('pdf')
+                                                                <embed src="{{ asset($pengaduan->akta) }}#toolbar=0"
+                                                                    type="application/pdf" width="200" height="600px" />
+                                                            @break
 
-                                                    @default
-                                                    <img src="{{ asset($pengaduan->akta) }}" alt="akta" width="200">
-                                                    @endswitch
+                                                            @default
+                                                                <img src="{{ asset($pengaduan->akta) }}" alt="akta"
+                                                                    width="200">
+                                                        @endswitch
                                                     @endif
                                                 </div>
                                             </div>
@@ -686,49 +709,58 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label for="kk-input" class="form-label">KK</label>
-                                                    <input type="file" name="kk" class="form-control" id="kk-input" accept="image/*" onchange="previewImage(event, 'kk-preview')">
+                                                    <input type="file" name="kk" class="form-control"
+                                                        id="kk-input" accept="image/*"
+                                                        onchange="previewImage(event, 'kk-preview')">
                                                     @if ($pengaduan->kk != null)
-                                                    @php
-                                                    $ext = pathinfo($pengaduan->kk, PATHINFO_EXTENSION);
-                                                    @endphp
-                                                    @switch($ext)
-                                                    @case('pdf')
-                                                    <embed src="{{ asset($pengaduan->kk) }}#toolbar=0" type="application/pdf"
-                                                        width="200" height="600px" />
-                                                    @break
+                                                        @php
+                                                            $ext = pathinfo($pengaduan->kk, PATHINFO_EXTENSION);
+                                                        @endphp
+                                                        @switch($ext)
+                                                            @case('pdf')
+                                                                <embed src="{{ asset($pengaduan->kk) }}#toolbar=0"
+                                                                    type="application/pdf" width="200" height="600px" />
+                                                            @break
 
-                                                    @default
-                                                    <img src="{{ asset($pengaduan->kk) }}" alt="kk" width="200">
-                                                    @endswitch
+                                                            @default
+                                                                <img src="{{ asset($pengaduan->kk) }}" alt="kk"
+                                                                    width="200">
+                                                        @endswitch
                                                     @endif
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="foto_korban-input" class="form-label">Foto Korban</label>
-                                                    <input type="file" name="foto_korban" class="form-control" id="foto_korban-input" accept="image/*" onchange="previewImage(event, 'foto_korban-preview')">
+                                                    <label for="foto_korban-input" class="form-label">Foto
+                                                        Korban</label>
+                                                    <input type="file" name="foto_korban" class="form-control"
+                                                        id="foto_korban-input" accept="image/*"
+                                                        onchange="previewImage(event, 'foto_korban-preview')">
                                                     @if ($pengaduan->foto_korban != null)
-                                                    @php
-                                                    $ext = pathinfo($pengaduan->foto_korban, PATHINFO_EXTENSION);
-                                                    @endphp
-                                                    @switch($ext)
-                                                    @case('pdf')
-                                                    <embed src="{{ asset($pengaduan->foto_korban) }}#toolbar=0" type="application/pdf"
-                                                        width="200" height="600px" />
-                                                    @break
+                                                        @php
+                                                            $ext = pathinfo(
+                                                                $pengaduan->foto_korban,
+                                                                PATHINFO_EXTENSION,
+                                                            );
+                                                        @endphp
+                                                        @switch($ext)
+                                                            @case('pdf')
+                                                                <embed src="{{ asset($pengaduan->foto_korban) }}#toolbar=0"
+                                                                    type="application/pdf" width="200" height="600px" />
+                                                            @break
 
-                                                    @default
-                                                    <img src="{{ asset($pengaduan->foto_korban) }}" alt="foto_korban" width="200">
-                                                    @endswitch
+                                                            @default
+                                                                <img src="{{ asset($pengaduan->foto_korban) }}"
+                                                                    alt="foto_korban" width="200">
+                                                        @endswitch
                                                     @endif
                                                 </div>
                                             </div>
                                         </div>
                                         <ul class="pager wizard twitter-bs-wizard-pager-link">
                                             <li class="previous"><a href="javascript: void(0);"
-                                                    class="btn btn-primary" ><i
-                                                        class="bx bx-chevron-left me-1"></i>
+                                                    class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i>
                                                     Previous</a></li>
                                             <button class="btn btn-primary float-end">Save
                                                 Changes</button>
@@ -772,8 +804,8 @@
     </script>
 
     <script>
-        var id_kecamatan = @json($pengaduan -> kecamatan_korban);
-        var id_kelurahan = @json($pengaduan -> kelurahan_korban);
+        var id_kecamatan = @json($pengaduan->kecamatan_korban);
+        var id_kelurahan = @json($pengaduan->kelurahan_korban);
 
         function onChangeSelect(url, id, name) {
             // send ajax request to get the cities of the selected province and append to the select tag

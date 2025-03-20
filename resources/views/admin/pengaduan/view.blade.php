@@ -62,7 +62,7 @@
                         <tr>
                             <td>Jenis Kekerasan</td>
                             <td>:</td>
-                            <td>{{ $pengaduan->jenis_kekerasan }}</td>
+                            <td>{{ $pengaduan->jenis_aduan }}</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -83,7 +83,7 @@
                             <td>{{ $pengaduan->nama_pelapor }}</td>
                             <td>Jenis Kelamin Pelapor</td>
                             <td>:</td>
-                            <td>{{ $pengaduan->jenis_kekerasan }}</td>
+                            <td>{{ $pengaduan->jenis_kelamin_pelapor }}</td>
                         </tr>
                         <tr>
                             <td>Hubungan Pelapor</td>
@@ -128,7 +128,8 @@
                         <tr>
                             <td>Tanggal Lahir Korban</td>
                             <td>:</td>
-                            <td>{{ $pengaduan->lahir_korban?->format('Y-m-d') }}</td>
+                            <td>{{ $pengaduan->tempat_lahir_korban }},
+                                {{ $pengaduan->lahir_korban?->format('Y-m-d') }}</td>
                             <td>Usia Korban</td>
                             <td>:</td>
                             <td>{{ $pengaduan->usia_korban }}</td>
@@ -203,7 +204,8 @@
                         <tr>
                             <td>Lahir Pelaku</td>
                             <td>:</td>
-                            <td>{{ $pengaduan->lahir_pelaku?->format('Y-m-d') }}</td>
+                            <td>{{ $pengaduan->tempat_lahir_pelaku }},
+                                {{ $pengaduan->lahir_pelaku?->format('Y-m-d') }}</td>
                             <td>Usia Pelaku</td>
                             <td>:</td>
                             <td>{{ $pengaduan->usia_pelaku }}</td>
@@ -257,18 +259,22 @@
                         <tr>
                             <td>Kronologis</td>
                             <td>:</td>
-                            <td colspan="4">{{ $pengaduan->kronologis }}</td>
+                            <td colspan="4" class="text-wrap w-100" style="overflow-wrap: break-word;">
+                                {{ $pengaduan->kronologis }}
+                            </td>
                         </tr>
                         <tr>
                             <td>Keterangan</td>
                             <td>:</td>
-                            <td colspan="4">{{ $pengaduan->keterangan }}</td>
+                            <td colspan="4" class="text-wrap w-100" style="overflow-wrap: break-word;">
+                                {{ $pengaduan->keterangan }}
+                            </td>
                         </tr>
                         <tr>
                             <td>Tanda Tangan</td>
                             <td>:</td>
-                            <td><img style="width: 200px" src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}" alt=""
-                                    width="100" height="100">
+                            <td><img style="width: 200px" src="{{ asset('storage/ttd/' . $pengaduan->ttd) }}"
+                                    alt="" width="100" height="100">
                             </td>
                         </tr>
                     </table>

@@ -209,7 +209,11 @@ class PengaduanController extends Controller
             'akta' => $dataakta,
             'ktp' => $dataktp,
             'kk' => $datakk,
-            'foto_korban' => $datafotokorban
+            'foto_korban' => $datafotokorban,
+
+            'tempat_lahir_pelaku' => $request->tempat_lahir_pelaku,
+            'tempat_lahir_korban' => $request->tempat_lahir_korban
+            
         ]);
         // Pastikan dataLayanan tidak error saat $request->jenis_layanan null atau tidak ada
         $dataLayanan = [];
@@ -315,6 +319,9 @@ class PengaduanController extends Controller
         $pengaduan->kronologis = $request->kronologis;
         $pengaduan->status = $request->status;
         $pengaduan->keterangan = $request->keterangan;
+
+        $pengaduan->tempat_lahir_pelaku = $request->tempat_lahir_pelaku;
+        $pengaduan->tempat_lahir_korban = $request->tempat_lahir_korban;
 
         $pengaduan->jenisLayanan()->delete();
         $pengaduan->jenisKekerasan()->delete();

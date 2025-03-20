@@ -27,7 +27,7 @@
                 <div class="dash-count das2">
                     <div class="dash-counts">
                         <h4>{{ $pengaduan }}</h4>
-                        <h5>Jumlah Keselurahan Kasus</h5>
+                        <h5>Jumlah Keseluruhan Kasus</h5>
                     </div>
                     <div class="dash-imgs">
                         <i data-feather="file-text"></i>
