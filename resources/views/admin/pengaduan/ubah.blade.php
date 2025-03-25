@@ -833,26 +833,29 @@
             })
 
             $('#lahir_korban').on('change', function() {
-                const birthdate = document.getElementById('lahir_korban').value;
-                const today = new Date();
-                const birthDate = new Date(birthdate);
-                const age = today.getFullYear() - birthDate.getFullYear();
+                let birthdateInput = document.getElementById('lahir_korban');
+                if (!birthdateInput) return; // Ensure the input exists
 
-                // Adjust age if birthday hasn't occurred yet this year
+                let birthdate = birthdateInput.value;
+                let today = new Date();
+                let birthDate = new Date(birthdate);
+                let age = today.getFullYear() - birthDate.getFullYear();
+
                 if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
                     age--;
                 }
 
                 document.getElementById('usia_korban').value = age;
-
-            })
-
+            });
 
             $('#lahir_pelaku').on('change', function() {
-                const birthdate = document.getElementById('lahir_pelaku').value;
-                const today = new Date();
-                const birthDate = new Date(birthdate);
-                const age = today.getFullYear() - birthDate.getFullYear();
+                let birthdateInput = document.getElementById('lahir_pelaku');
+                if (!birthdateInput) return; // Ensure the input exists
+
+                let birthdate = birthdateInput.value;
+                let today = new Date();
+                let birthDate = new Date(birthdate);
+                let age = today.getFullYear() - birthDate.getFullYear();
 
                 // Adjust age if birthday hasn't occurred yet this year
                 if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {

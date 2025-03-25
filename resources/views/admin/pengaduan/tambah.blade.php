@@ -107,10 +107,11 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
-                                                <label for="basicpill-lastname-input" required class="form-label">Tanggal
+                                                <label for="basicpill-lastname-input" required
+                                                    class="form-label">Tanggal
                                                     Registrasi</label>
-                                                <input type="date" required name="tanggal_registrasi" class="form-control"
-                                                    id="basicpill-lastname-input">
+                                                <input type="date" required name="tanggal_registrasi"
+                                                    class="form-control" id="basicpill-lastname-input">
                                             </div>
                                         </div>
                                     </div>
@@ -270,8 +271,13 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Korban</label>
-                                                    <input type="date" name="lahir_korban" required class="form-control"
-                                                        id="lahir_korban">
+                                                    <div class="d-flex gap-2">
+                                                        <input type="text" name="tempat_lahir_korban"
+                                                            class="form-control" id="tempat_lahir_korban"
+                                                            placeholder="Tempat Lahir">
+                                                        <input type="date" name="lahir_korban" required
+                                                            class="form-control" id="lahir_korban">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -426,8 +432,13 @@
                                                 <div class="mb-3">
                                                     <label for="basicpill-servicetax-input" class="form-label">Tempat,
                                                         Tanggal Lahir Pelaku</label>
-                                                    <input type="date" name="lahir_pelaku" class="form-control"
-                                                        id="lahir_pelaku">
+                                                    <div class="d-flex gap-2">
+                                                        <input type="text" name="tempat_lahir_pelaku"
+                                                            class="form-control" id="tempat_lahir_pelaku"
+                                                            placeholder="Tempat Lahir">
+                                                        <input type="date" name="lahir_pelaku"
+                                                            class="form-control" id="lahir_pelaku">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -565,8 +576,7 @@
                                                 <div class="mb-3">
                                                     <label for="ktp-input" class="form-label">KTP</label>
                                                     <input type="file" name="ktp" class="form-control"
-                                                        id="ktp-input" 
-                                                        onchange="previewImage(event, 'ktp-preview')">
+                                                        id="ktp-input" onchange="previewImage(event, 'ktp-preview')">
                                                     <img id="ktp-preview"
                                                         style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
@@ -576,7 +586,7 @@
                                                 <div class="mb-3">
                                                     <label for="akta-input" class="form-label">Akta</label>
                                                     <input type="file" name="akta" class="form-control"
-                                                        id="akta-input" 
+                                                        id="akta-input"
                                                         onchange="previewImage(event, 'akta-preview')">
                                                     <img id="akta-preview"
                                                         style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
@@ -587,8 +597,7 @@
                                                 <div class="mb-3">
                                                     <label for="kk-input" class="form-label">KK</label>
                                                     <input type="file" name="kk" class="form-control"
-                                                        id="kk-input" 
-                                                        onchange="previewImage(event, 'kk-preview')">
+                                                        id="kk-input" onchange="previewImage(event, 'kk-preview')">
                                                     <img id="kk-preview"
                                                         style="display: none; max-width: 100%; height: auto; margin-top: 10px;" />
                                                 </div>
@@ -720,27 +729,39 @@
             $('#kecamatan').on('change', function() {
                 onChangeSelect('{{ route('villages') }}', $(this).val(), 'desa');
             })
+
             $('#lahir_korban').on('change', function() {
-                const birthdate = document.getElementById('lahir_korban').value;
-                const today = new Date();
-                const birthDate = new Date(birthdate);
-                const age = today.getFullYear() - birthDate.getFullYear();
-                // Adjust age if birthday hasn't occurred yet this year
+                let birthdateInput = document.getElementById('lahir_korban');
+                if (!birthdateInput) return; // Ensure the input exists
+
+                let birthdate = birthdateInput.value;
+                let today = new Date();
+                let birthDate = new Date(birthdate);
+                let age = today.getFullYear() - birthDate.getFullYear();
+
                 if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
                     age--;
                 }
+
                 document.getElementById('usia_korban').value = age;
-            })
+            });
+
             $('#lahir_pelaku').on('change', function() {
-                const birthdate = document.getElementById('lahir_pelaku').value;
-                const today = new Date();
-                const birthDate = new Date(birthdate);
-                const age = today.getFullYear() - birthDate.getFullYear();
+                let birthdateInput = document.getElementById('lahir_pelaku');
+                if (!birthdateInput) return; // Ensure the input exists
+
+                let birthdate = birthdateInput.value;
+                let today = new Date();
+                let birthDate = new Date(birthdate);
+                let age = today.getFullYear() - birthDate.getFullYear();
+
                 // Adjust age if birthday hasn't occurred yet this year
                 if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
                     age--;
                 }
+
                 document.getElementById('usia_pelaku').value = age;
+
             })
         });
     </script>
