@@ -267,15 +267,16 @@
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    <label for="basicpill-servicetax-input" class="form-label">Tempat,
-                                                        Tanggal Lahir Korban</label>
+                                                    <label for="lahir_korban" class="form-label">Tempat, Tanggal Lahir
+                                                        Korban</label>
                                                     <div class="d-flex gap-2">
                                                         <input type="text" name="tempat_lahir_korban"
                                                             class="form-control" id="tempat_lahir_korban"
                                                             placeholder="Tempat Lahir">
-                                                        <input type="date" name="lahir_korban" required
+                                                        <input type="date" name="lahir_korban"
                                                             class="form-control" id="lahir_korban">
                                                     </div>
                                                 </div>
