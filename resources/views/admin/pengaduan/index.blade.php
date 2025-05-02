@@ -6,8 +6,10 @@
                 <h6>Manajemen Pengaduan</h6>
             </div>
             <div class="page-btn">
-                <a href="{{ route('pengaduan.create') }}" class="btn btn-added"><img
-                        src="{{ asset('tadmin/assets/img/icons/plus.svg') }}" alt="img">Tambah Pengaduan</a>
+                @if (Auth::user()->id == 5 || Auth::user()->id == 12)
+                    <a href="{{ route('pengaduan.create') }}" class="btn btn-added"><img
+                            src="{{ asset('tadmin/assets/img/icons/plus.svg') }}" alt="img">Tambah Pengaduan</a>
+                @endif
             </div>
         </div>
         <div class="card">
@@ -97,10 +99,12 @@
                                     <td>{{ $item->status }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a class="me-3" href="{{ route('pengaduan.edit', $item->id) }}">
-                                                <img src="{{ asset('tadmin/assets/img/icons/edit.svg') }}"
-                                                    alt="img">
-                                            </a>
+                                            @if (Auth::user()->id == 5 || Auth::user()->id == 12)
+                                                <a class="me-3" href="{{ route('pengaduan.edit', $item->id) }}">
+                                                    <img src="{{ asset('tadmin/assets/img/icons/edit.svg') }}"
+                                                        alt="img">
+                                                </a>
+                                            @endif
                                             <a class="me-3" href="{{ route('pengaduan.show', $item->id) }}">
                                                 <img src="{{ asset('tadmin/assets/img/icons/search.svg') }}"
                                                     alt="img">

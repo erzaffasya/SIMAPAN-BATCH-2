@@ -94,12 +94,31 @@
                 <td>{{ $item->kronologis }}</td>
                 <td>{{ $item->status }}</td>
                 <td>{{ $item->keterangan }}</td>
-
-                <td><a href="{{ asset($item->ttd) }}">Tanda Tangan</a></td>
-                <td><a href="{{ asset($item->akta) }}">Akta</a></td>
-                <td><a href="{{ asset($item->ktp) }}">KTP</a></td>
-                <td><a href="{{ asset($item->kk) }}">KK</a></td>
-                <td><a href="{{ asset($item->foto_korban) }}">Foto Korban</a></td>
+                <td>
+                    @if (!empty($item->ttd))
+                        <a href="{{ asset('storage/ttd/' . $item->ttd) }}">Tanda Tangan</a>
+                    @endif
+                </td>
+                <td>
+                    @if (!empty($item->akta))
+                        <a href="{{ asset($item->akta) }}">Akta</a>
+                    @endif
+                </td>
+                <td>
+                    @if (!empty($item->ktp))
+                        <a href="{{ asset($item->ktp) }}">KTP</a>
+                    @endif
+                </td>
+                <td>
+                    @if (!empty($item->kk))
+                        <a href="{{ asset($item->kk) }}">KK</a>
+                    @endif
+                </td>
+                <td>
+                    @if (!empty($item->foto_korban))
+                        <a href="{{ asset($item->foto_korban) }}">Foto Korban</a>
+                    @endif
+                </td>
             </tr>
         @endforeach
     </tbody>
